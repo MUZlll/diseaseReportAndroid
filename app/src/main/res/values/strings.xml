@@ -1,0 +1,17 @@
+<resources>
+	<string name="app_name">DiseaseReportAndroid</string>
+    <string name="login_id_hint">请输入账号</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_btn_text">登陆</string>
+    <string name="user_permission_text">普通用户</string>
+    <string name="doctor_permission_text">医生</string>
+    <string name="admin_permission_text">管理员</string>
+    <string name="id_password_illegal_text">用户名或密码不能为空</string>
+    <string name="personal_info_text">个人信息</string>
+    <string name="health_punch_text">健康打卡</string>
+    <string name="disease_case_text">病历管理</string>
+    <string name="user_manage_text">人员管理</string>
+    <string name="health_data_text">数据统计</string>
+    <string name="network_error_text">网络错误，请点击重试</string>
+    <string name="content_empty">内容为空</string>
+</resources>

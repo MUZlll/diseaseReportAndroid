@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/personal_info"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/personal_info_text" />
+
+    <item
+        android:id="@+id/punch"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/health_punch_text" />
+    <item
+        android:id="@+id/disease_case"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/disease_case_text" />
+    <item
+        android:id="@+id/user_manage"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/user_manage_text" />
+    <item
+        android:id="@+id/health_data"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/health_data_text" />
+</menu>

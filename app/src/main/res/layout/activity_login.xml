@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.muz1i.diseasereportandroid.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.muz1i.diseasereportandroid.custom.LoadingView
+            android:id="@+id/loadingPic"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/loginId"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:hint="@string/login_id_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:text="@={viewModel.id}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:hint="@string/login_password_hint"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginId"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <RadioGroup
+            android:id="@+id/permissionSelectBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@={viewModel.permission}"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginPassword">
+
+            <RadioButton
+                android:id="@+id/user_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/user_permission_text"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/doctor_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/doctor_permission_text"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/admin_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/admin_permission_text"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_btn_text"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/permissionSelectBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
