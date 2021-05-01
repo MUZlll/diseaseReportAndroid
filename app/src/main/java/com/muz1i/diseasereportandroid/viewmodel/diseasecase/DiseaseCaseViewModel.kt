@@ -1,4 +1,4 @@
-package com.muz1i.diseasereportandroid.viewmodel
+package com.muz1i.diseasereportandroid.viewmodel.diseasecase
 
 import com.muz1i.diseasereportandroid.base.BaseViewModel
 

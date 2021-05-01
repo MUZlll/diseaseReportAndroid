@@ -1,9 +1,9 @@
-package com.muz1i.diseasereportandroid.view.fragment
+package com.muz1i.diseasereportandroid.view.fragment.healthdata
 
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.databinding.FragmentHealthDataBinding
-import com.muz1i.diseasereportandroid.viewmodel.HealthDataViewModel
+import com.muz1i.diseasereportandroid.viewmodel.healthdata.HealthDataViewModel
 
 /**
  * @author: Muz1i

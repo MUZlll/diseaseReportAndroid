@@ -8,6 +8,7 @@ import com.muz1i.diseasereportandroid.bean.LoginData
 import com.muz1i.diseasereportandroid.bean.ResultData
 import com.muz1i.diseasereportandroid.repository.LoginRepository
 import com.muz1i.diseasereportandroid.utils.LoadState
+import com.muz1i.diseasereportandroid.utils.ToastUtils
 import kotlinx.coroutines.launch
 
 /**
@@ -35,7 +36,7 @@ class LoginViewModel : BaseViewModel() {
         MutableLiveData<String>()
     }
 
-    val permission by lazy {
+    val identity by lazy {
         val mutableLiveData = MutableLiveData<Int>()
         mutableLiveData.value = R.id.user_permission
         mutableLiveData
@@ -46,15 +47,20 @@ class LoginViewModel : BaseViewModel() {
         loadState.value = LoadState.LOADING
         viewModelScope.launch {
             val loginData = LoginData(id.value!!.toLong(), password.value.toString())
-            val result = when (permission.value) {
-                R.id.user_permission -> repository.userLogin(loginData)
-                R.id.doctor_permission -> repository.doctorLogin(loginData)
-                R.id.admin_permission -> repository.adminLogin(loginData)
-                else -> null
+            try {
+                val result = when (identity.value) {
+                    R.id.user_permission -> repository.userLogin(loginData)
+                    R.id.doctor_permission -> repository.doctorLogin(loginData)
+                    R.id.admin_permission -> repository.adminLogin(loginData)
+                    else -> null
+                }
+                loginResult.value = result
+                loadState.value = LoadState.SUCCESS
+                println("result code -> ${result?.code}")
+            } catch (ex: Exception) {
+                loadState.value=LoadState.ERROR
+                ToastUtils.showToast("网络异常，请稍后重试")
             }
-            loginResult.value = result
-            loadState.value = LoadState.SUCCESS
-            println("result code -> ${result?.code}")
         }
     }
 }

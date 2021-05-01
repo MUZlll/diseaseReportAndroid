@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseaseReportAndroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activity.LoginActivity">
+        <activity
+            android:name=".view.activity.LoginActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

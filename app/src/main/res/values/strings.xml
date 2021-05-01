@@ -1,5 +1,6 @@
 <resources>
-	<string name="app_name">DiseaseReportAndroid</string>
+    <string name="app_name">疾病报告系统</string>
+
     <string name="login_id_hint">请输入账号</string>
     <string name="login_password_hint">请输入密码</string>
     <string name="login_btn_text">登陆</string>
@@ -14,4 +15,8 @@
     <string name="health_data_text">数据统计</string>
     <string name="network_error_text">网络错误，请点击重试</string>
     <string name="content_empty">内容为空</string>
+    <string name="punch_manage_text">打卡管理</string>
+    <string name="main_activity_title">疾病报告</string>
+    <string name="toolbar_menu_personal_info">个人信息</string>
+    <string name="toolbar_menu_exit">退出登录</string>
 </resources>

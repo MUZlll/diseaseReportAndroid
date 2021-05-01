@@ -2,41 +2,35 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_config"
-    app:startDestination="@id/personal_info">
-
-
-    <fragment
-        android:id="@+id/personal_info"
-        android:label="pesonal_info"
-        android:name="com.muz1i.diseasereportandroid.view.fragment.PersonalInfoFragment">
-
-    </fragment>
+    app:startDestination="@id/punch">
 
     <fragment
         android:id="@+id/punch"
         android:label="punch"
-        android:name="com.muz1i.diseasereportandroid.view.fragment.PunchFragment">
-
+        android:name="com.muz1i.diseasereportandroid.view.fragment.punch.PunchContainerFragment">
     </fragment>
-
+    
     <fragment
         android:id="@+id/disease_case"
         android:label="disease_case"
-        android:name="com.muz1i.diseasereportandroid.view.fragment.DiseaseCaseFragment">
-
+        android:name="com.muz1i.diseasereportandroid.view.fragment.diseasecase.DiseaseCaseFragment">
     </fragment>
 
     <fragment
         android:id="@+id/user_manage"
         android:label="user_manage"
-        android:name="com.muz1i.diseasereportandroid.view.fragment.UserManageFragment">
-
+        android:name="com.muz1i.diseasereportandroid.view.fragment.manage.UserManageContainerFragment">
     </fragment>
 
     <fragment
         android:id="@+id/health_data"
         android:label="health_data"
-        android:name="com.muz1i.diseasereportandroid.view.fragment.HealthDataFragment">
+        android:name="com.muz1i.diseasereportandroid.view.fragment.healthdata.HealthDataFragment">
+    </fragment>
 
+    <fragment
+        android:id="@+id/personal_info"
+        android:label="pesonal_info"
+        android:name="com.muz1i.diseasereportandroid.view.fragment.PersonalInfoFragment">
     </fragment>
 </navigation>

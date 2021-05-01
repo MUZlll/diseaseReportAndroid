@@ -17,11 +17,11 @@ import com.muz1i.diseasereportandroid.utils.LoadState
  * @author: Muz1i
  * @date: 2021/4/24
  */
-abstract class BaseFragment<VM : BaseViewModel, Binding : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, VB : ViewDataBinding> : Fragment() {
 
-    private lateinit var binding: Binding
-    private lateinit var viewModel: VM
-    private lateinit var rootView: View
+    lateinit var binding: VB
+    lateinit var viewModel: VM
+    lateinit var rootView: View
     private lateinit var baseContainer: FrameLayout
     private lateinit var loadingView: View
     private lateinit var emptyView: View
@@ -46,10 +46,15 @@ abstract class BaseFragment<VM : BaseViewModel, Binding : ViewDataBinding> : Fra
         loadStateView(inflater, container)
         //观察BaseViewModel的State的状态->更新页面状态
         observeState()
+        initView()
         //设置相关事件
         initEvent()
         loadData()
         return rootBinding.root
+    }
+
+    open fun initView() {
+
     }
 
     private fun loadStateView(inflater: LayoutInflater, container: ViewGroup?) {
@@ -64,7 +69,7 @@ abstract class BaseFragment<VM : BaseViewModel, Binding : ViewDataBinding> : Fra
         baseContainer.addView(emptyView)
         errorView = loadErrorView(inflater, container)
         baseContainer.addView(errorView)
-        viewModel.loadState.value = LoadState.NONE
+        viewModel.loadState.value = LoadState.SUCCESS
     }
 
     private fun observeState() {

@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
  * @author: Muz1i
  * @date: 2021/4/22
  */
-abstract class BaseActivity<VM : BaseViewModel, Binding : ViewDataBinding> :
+abstract class BaseActivity<VM : BaseViewModel, VB : ViewDataBinding> :
     AppCompatActivity() {
 
     lateinit var viewModel: VM
-    lateinit var binding: Binding
+    lateinit var binding: VB
     lateinit var rootView: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         //初始化binding
         binding = DataBindingUtil.setContentView(this, getContentViewId())
         binding.lifecycleOwner = this

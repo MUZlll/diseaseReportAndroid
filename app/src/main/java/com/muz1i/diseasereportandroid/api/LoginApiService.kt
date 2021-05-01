@@ -9,7 +9,7 @@ import retrofit2.http.POST
  * @author: Muz1i
  * @date: 2021/4/22
  */
-interface ApiService {
+interface LoginApiService {
     @POST("user/login")
     suspend fun userLogin(@Body loginData: LoginData): ResultData<Int>
 

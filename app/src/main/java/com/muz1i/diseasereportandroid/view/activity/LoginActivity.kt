@@ -6,6 +6,7 @@ import android.view.View
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.base.BaseActivity
 import com.muz1i.diseasereportandroid.databinding.ActivityLoginBinding
+import com.muz1i.diseasereportandroid.utils.Constants
 import com.muz1i.diseasereportandroid.utils.LoadState
 import com.muz1i.diseasereportandroid.utils.ToastUtils
 import com.muz1i.diseasereportandroid.viewmodel.LoginViewModel
@@ -15,6 +16,8 @@ import com.muz1i.diseasereportandroid.viewmodel.LoginViewModel
  * @date: 2021/4/23
  */
 class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
+
+    private lateinit var permission: String
 
     override fun getContentViewId(): Int {
         return R.layout.activity_login
@@ -39,14 +42,24 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
                 ToastUtils.showToast(loginResult.message)
                 if (loginResult.success) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra(Constants.PERMISSION_KEY, permission)
                     startActivity(intent)
                 }
             })
-            permission.observe(that, { permission ->
-                when (permission) {
-                    R.id.user_permission -> loginIdFilter(12)
-                    R.id.doctor_permission -> loginIdFilter(10)
-                    R.id.admin_permission -> loginIdFilter(10)
+            identity.observe(that, {
+                when (it) {
+                    R.id.user_permission -> {
+                        loginIdFilter(12)
+                        permission = Constants.PERMISSION_USER
+                    }
+                    R.id.doctor_permission -> {
+                        loginIdFilter(10)
+                        permission = Constants.PERMISSION_DOCTOR
+                    }
+                    R.id.admin_permission -> {
+                        loginIdFilter(10)
+                        permission = Constants.PERMISSION_ADMIN
+                    }
                 }
             })
         }
@@ -66,8 +79,8 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
 
     private fun loginIdFilter(length: Int) {
         binding.loginId.run {
-            if (this.text.length > length) {
-                val substring = this.text.substring(0, length - 1)
+            if (this.text!!.length > length) {
+                val substring = this.text!!.substring(0, length - 1)
                 this.setText(substring)
             }
         }

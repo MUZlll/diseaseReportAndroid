@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <com.muz1i.diseasereportandroid.custom.LoadingView
-            android:id="@+id/loadingPic"
+            android:id="@+id/loading_pic"
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:visibility="gone"
@@ -23,44 +23,57 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/loginId"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_id_layout"
+            style="@style/textInputColor"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:hint="@string/login_id_hint"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:text="@={viewModel.id}"
-            android:textSize="20sp"
+            app:boxBackgroundMode="outline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.8" />
+            app:layout_constraintWidth_percent="0.8">
 
-        <EditText
-            android:id="@+id/loginPassword"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:text="@={viewModel.id}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_password_layout"
+            style="@style/textInputColor"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="@string/login_password_hint"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:text="@={viewModel.password}"
-            android:textSize="20sp"
+            app:boxBackgroundMode="outline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/loginId"
-            app:layout_constraintWidth_percent="0.8" />
+            app:layout_constraintTop_toBottomOf="@id/login_id_layout"
+            app:layout_constraintWidth_percent="0.8">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@={viewModel.password}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
-            android:id="@+id/permissionSelectBtn"
+            android:id="@+id/permission_select_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkedButton="@={viewModel.permission}"
+            android:checkedButton="@={viewModel.identity}"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/loginPassword">
+            app:layout_constraintTop_toBottomOf="@id/login_password_layout">
 
             <RadioButton
                 android:id="@+id/user_permission"
@@ -68,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/user_permission_text"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/doctor_permission"
@@ -76,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/doctor_permission_text"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/admin_permission"
@@ -84,17 +97,17 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/admin_permission_text"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
         </RadioGroup>
 
         <Button
-            android:id="@+id/loginBtn"
+            android:id="@+id/login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_btn_text"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/permissionSelectBtn" />
+            app:layout_constraintTop_toBottomOf="@id/permission_select_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

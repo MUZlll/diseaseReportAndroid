@@ -22,5 +22,6 @@ object RetrofitClient {
         .client(okHttpClient)
         .build()
 
-    val apiService: ApiService = retrofit.create(ApiService::class.java)
+    val loginApiService: LoginApiService = retrofit.create(LoginApiService::class.java)
+    val userApiService: UserApiService = retrofit.create(UserApiService::class.java)
 }
