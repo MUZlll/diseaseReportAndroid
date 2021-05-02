@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.muz1i.diseasereportandroid.bean.UserInfoData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="详细信息"
+                android:textSize="20sp" />
+        </Toolbar>
+
+        <TextView
+            android:id="@+id/divide_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E2E2E2"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guide_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_name_text"
+            app:layout_constraintBottom_toTopOf="@id/stu_num_layout"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:startIconDrawable="@mipmap/name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="1"
+                android:text="@={viewModel.name}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/stu_num_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_stu_num_text"
+            app:layout_constraintTop_toBottomOf="@id/name_layout"
+            app:startIconDrawable="@mipmap/number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="1"
+                android:text="@={viewModel.studentNum}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_password_text"
+            app:layout_constraintTop_toBottomOf="@id/stu_num_layout"
+            app:startIconDrawable="@mipmap/password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.password}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sex_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_sex_text"
+            app:layout_constraintTop_toBottomOf="@id/password_layout"
+            app:startIconDrawable="@mipmap/sex">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.sex}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/grade_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_grade_text"
+            app:layout_constraintTop_toBottomOf="@id/sex_layout"
+            app:startIconDrawable="@mipmap/grade">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.grade}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/institute_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_institute_text"
+            app:layout_constraintTop_toBottomOf="@id/grade_layout"
+            app:startIconDrawable="@mipmap/institute">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.institute}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/major_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_major_text"
+            app:layout_constraintTop_toBottomOf="@id/institute_layout"
+            app:startIconDrawable="@mipmap/major">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.major}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/class_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_clazz_text"
+            app:layout_constraintTop_toBottomOf="@id/major_layout"
+            app:startIconDrawable="@mipmap/clazz">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.clazz}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dormitory_layout"
+            style="@style/TextInputLayoutStyle"
+            android:hint="@string/detail_dormitory_text"
+            app:layout_constraintTop_toBottomOf="@id/class_layout"
+            app:startIconDrawable="@mipmap/dormitory">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.dormitory}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/modify_btn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="@string/detail_modify_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dormitory_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

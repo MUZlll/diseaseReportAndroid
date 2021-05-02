@@ -48,10 +48,11 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     }
 
     private fun initEvent() {
-        val navigationButton = binding.mainToolbar.getChildAt(0)
-        navigationButton.setOnClickListener {
+        val logoutBtn = binding.mainToolbar.menu[0]
+        logoutBtn.setOnMenuItemClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            true
         }
     }
 }

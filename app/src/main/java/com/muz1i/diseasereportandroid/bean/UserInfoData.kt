@@ -5,14 +5,14 @@ package com.muz1i.diseasereportandroid.bean
  * @date: 2021/4/28
  */
 data class UserInfoData(
-    val id: Int,
-    val studentNum: String,
-    val name: String,
-    val password: String,
-    val sex: String,
-    val institute: String,
-    val major: String,
-    val grade: String,
-    val clazz: String,
-    val dormitory: String
+    var id: Int,
+    var studentNum: String,
+    var name: String,
+    var password: String,
+    var sex: String,
+    var institute: String,
+    var major: String,
+    var grade: String,
+    var clazz: String,
+    var dormitory: String
 )

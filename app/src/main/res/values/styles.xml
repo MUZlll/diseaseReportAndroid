@@ -2,7 +2,7 @@
 <resources>
 
     <style name="PersonalInfoTextStyle">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">5dp</item>
@@ -10,10 +10,17 @@
     </style>
 
     <style name="PersonalInfoContentStyle">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">5dp</item>
         <item name="layout_constraintStart_toStartOf">@+id/vertical_guide_line</item>
+    </style>
+
+    <style name="UserInfoTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

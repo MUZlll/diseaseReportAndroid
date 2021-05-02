@@ -19,4 +19,15 @@
     <string name="main_activity_title">疾病报告</string>
     <string name="toolbar_menu_personal_info">个人信息</string>
     <string name="toolbar_menu_exit">退出登录</string>
+    <string name="menu_logout_text">退出登录</string>
+    <string name="detail_name_text">姓名</string>
+    <string name="detail_stu_num_text">学号</string>
+    <string name="detail_sex_text">性别</string>
+    <string name="detail_grade_text">年级</string>
+    <string name="detail_institute_text">学院</string>
+    <string name="detail_major_text">专业</string>
+    <string name="detail_clazz_text">班级</string>
+    <string name="detail_dormitory_text">宿舍</string>
+    <string name="detail_modify_btn">完成修改</string>
+    <string name="detail_password_text">密码</string>
 </resources>

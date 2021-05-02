@@ -17,4 +17,8 @@ class UserRepository {
     suspend fun getUserList(pageNum: Int, pageSize: Int): ResultData<PageHelperData<UserInfoData>> {
         return RetrofitClient.userApiService.getUserList(pageNum, pageSize)
     }
+
+    suspend fun editUserInfo(userInfoData: UserInfoData): ResultData<Int> {
+        return RetrofitClient.userApiService.editUserInfo(userInfoData)
+    }
 }

@@ -13,50 +13,38 @@
 
         <TextView
             android:id="@+id/user_id"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/UserInfoTextStyle"
             android:text="ID"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/user_stu_num"
+            app:layout_constraintEnd_toStartOf="@id/user_name"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/user_stu_num"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="学号"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/user_name"
-            app:layout_constraintHorizontal_weight="2"
+            android:id="@+id/user_name"
+            style="@style/UserInfoTextStyle"
+            android:text="姓名"
+            app:layout_constraintEnd_toStartOf="@id/user_sex"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/user_id"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/user_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="姓名"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/user_sex"
+            android:id="@+id/user_sex"
+            style="@style/UserInfoTextStyle"
+            android:text="性别"
+            app:layout_constraintEnd_toStartOf="@id/user_stu_num"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@id/user_stu_num"
+            app:layout_constraintStart_toEndOf="@id/user_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/user_sex"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="性别"
-            android:textSize="20sp"
+            android:id="@+id/user_stu_num"
+            style="@style/UserInfoTextStyle"
+            android:text="学号"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@id/user_name"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@id/user_sex"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

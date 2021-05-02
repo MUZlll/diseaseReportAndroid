@@ -25,10 +25,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_id_layout"
-            style="@style/textInputColor"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_id_hint"
+            app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,11 +48,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_password_layout"
-            style="@style/textInputColor"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/login_password_hint"
+            app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="outline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,9 +104,11 @@
 
         <Button
             android:id="@+id/login_btn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_btn_text"
+            android:textColor="@color/gray_deep"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

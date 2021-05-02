@@ -11,61 +11,55 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/user_id_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/UserInfoTextStyle"
             android:text="@{String.valueOf(viewModel.id)}"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@id/user_stu_num_content"
+            app:layout_constraintEnd_toStartOf="@id/user_name_content"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/user_stu_num_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/UserInfoTextStyle"
             android:text="@{viewModel.studentNum}"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@id/user_name_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintStart_toEndOf="@id/user_id_content"
+            app:layout_constraintStart_toEndOf="@id/user_sex_content"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/user_name_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/UserInfoTextStyle"
             android:text="@{viewModel.name}"
-            android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/user_sex_content"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@id/user_stu_num_content"
+            app:layout_constraintStart_toEndOf="@id/user_id_content"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/user_sex_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            style="@style/UserInfoTextStyle"
             android:text="@{viewModel.sex}"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/user_stu_num_content"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/user_name_content"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
             android:background="@color/gray"
-            app:layout_constraintTop_toBottomOf="@id/user_sex_content"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            app:layout_constraintEnd_toEndOf="@id/user_stu_num_content"
+            app:layout_constraintStart_toStartOf="@id/user_name_content"
+            app:layout_constraintTop_toBottomOf="@id/user_sex_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

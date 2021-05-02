@@ -1,6 +1,7 @@
 package com.muz1i.diseasereportandroid.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -16,24 +17,9 @@ import com.muz1i.diseasereportandroid.databinding.ItemUserInfoHeaderBinding
  */
 class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() {
 
-    val userList by lazy {
-        val list = ArrayList<UserInfoData>()
-        //添加一个空UserInfoData用来占位，为了添加userInfoHeader
-        list.add(
-            UserInfoData(
-                0,
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0"
-            )
-        )
-        list
+    private lateinit var onItemClickListener: OnItemClickListener
+    private val userList by lazy {
+        ArrayList<UserInfoData>()
     }
 
     class InnerViewHolder(itemBinding: ViewDataBinding) :
@@ -65,8 +51,10 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
                 this.viewModel = userList[position]
                 this.executePendingBindings()
             }
+            root.setOnClickListener {
+                onItemClickListener.onItemClick(root, position, userList[position].studentNum)
+            }
         }
-
     }
 
     override fun getItemCount(): Int {
@@ -75,5 +63,40 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) 0 else 1
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.onItemClickListener = listener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(view: View, position: Int, stuNum: String)
+    }
+
+    fun setData(list: List<UserInfoData>) {
+        userList.clear()
+        //添加一个空UserInfoData用来占位，为了添加userInfoHeader
+        userList.add(
+            UserInfoData(
+                0,
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+            )
+        )
+        userList.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    fun addData(list: List<UserInfoData>) {
+        val oldSize = userList.size
+        userList.addAll(list)
+        notifyItemRangeChanged(oldSize, userList.size)
     }
 }

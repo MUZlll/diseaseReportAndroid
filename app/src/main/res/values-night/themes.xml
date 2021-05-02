@@ -14,16 +14,4 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
-
-    <style name="ToolBarColor">
-        <item name="android:background">@color/black_wx</item>
-    </style>
-
-    <style name="bottomNavStyle">
-        <item name="android:background">@color/black_wx</item>
-    </style>
-
-    <style name="textInputColor">
-        <item name="boxBackgroundColor">@color/black_wx</item>
-    </style>
 </resources>

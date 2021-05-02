@@ -15,21 +15,19 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
-            style="@style/ToolBarColor"
             android:layout_width="0dp"
             android:layout_height="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/selector_exit_btn">
+            app:menu="@menu/tool_bar_menu">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/main_activity_title"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
@@ -53,7 +51,6 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
-            style="@style/bottomNavStyle"
             android:layout_width="0dp"
             android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"

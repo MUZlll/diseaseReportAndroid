@@ -1,12 +1,10 @@
 package com.muz1i.diseasereportandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.muz1i.diseasereportandroid.base.BaseViewModel
 import com.muz1i.diseasereportandroid.bean.UserInfoData
 import com.muz1i.diseasereportandroid.repository.UserRepository
 import com.muz1i.diseasereportandroid.utils.LoadState
-import kotlinx.coroutines.launch
 
 /**
  * @author: Muz1i
@@ -23,9 +21,9 @@ class PersonalInfoViewModel : BaseViewModel() {
 
     fun getUserInfo(stuNum: String) {
         loadState.value = LoadState.LOADING
-        viewModelScope.launch {
+        catchEx({
             userInfo.value = userRepository.getUserInfo(stuNum).getResultData()
             loadState.value = LoadState.SUCCESS
-        }
+        })
     }
 }
