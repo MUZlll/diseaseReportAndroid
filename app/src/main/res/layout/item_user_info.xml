@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
+        android:background="@drawable/selector_user_info_bg"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp">
@@ -53,7 +53,7 @@
             app:layout_constraintStart_toEndOf="@id/user_name_content"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <ImageView
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"

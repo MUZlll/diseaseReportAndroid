@@ -50,9 +50,17 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
             if (this is ItemUserInfoBinding) {
                 this.viewModel = userList[position]
                 this.executePendingBindings()
-            }
-            root.setOnClickListener {
-                onItemClickListener.onItemClick(root, position, userList[position].studentNum)
+                root.setOnClickListener {
+                    onItemClickListener.onItemClick(root, position, userList[position].studentNum)
+                }
+                root.setOnLongClickListener {
+                    onItemClickListener.onItemLongClick(
+                        root,
+                        position,
+                        userList[position].id!!
+                    )
+                    true
+                }
             }
         }
     }
@@ -71,6 +79,7 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
 
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int, stuNum: String)
+        fun onItemLongClick(view: View, position: Int, id: Int)
     }
 
     fun setData(list: List<UserInfoData>) {
@@ -98,5 +107,10 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
         val oldSize = userList.size
         userList.addAll(list)
         notifyItemRangeChanged(oldSize, userList.size)
+    }
+
+    fun removeItem(pos: Int) {
+        userList.removeAt(pos)
+        notifyItemRemoved(pos)
     }
 }

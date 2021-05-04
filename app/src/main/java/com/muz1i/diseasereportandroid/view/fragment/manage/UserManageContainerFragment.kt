@@ -16,4 +16,10 @@ class UserManageContainerFragment : BaseViewContainerFragment() {
     override fun getTabList(): ArrayList<String> {
         return arrayListOf("用户管理", "医生管理")
     }
+
+    fun setOnAddBtnClickListener(onClick: () -> Unit) {
+        rootBinding.addButton.setOnClickListener {
+            onClick()
+        }
+    }
 }

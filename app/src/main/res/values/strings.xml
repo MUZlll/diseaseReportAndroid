@@ -30,4 +30,5 @@
     <string name="detail_dormitory_text">宿舍</string>
     <string name="detail_modify_btn">完成修改</string>
     <string name="detail_password_text">密码</string>
+    <string name="detail_create_user_text">创建用户</string>
 </resources>

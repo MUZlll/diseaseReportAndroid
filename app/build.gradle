@@ -68,4 +68,6 @@ dependencies {
 
     // JetPack Compose Integration
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
+
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
 }

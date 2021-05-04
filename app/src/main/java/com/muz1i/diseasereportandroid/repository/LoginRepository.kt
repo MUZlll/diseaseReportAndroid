@@ -10,13 +10,15 @@ import com.muz1i.diseasereportandroid.bean.ResultData
  */
 class LoginRepository {
 
-    suspend fun userLogin(loginData: LoginData): ResultData<Int> {
+    suspend fun userLogin(loginData: LoginData): ResultData<Unit> {
         return RetrofitClient.loginApiService.userLogin(loginData)
     }
-    suspend fun doctorLogin(loginData: LoginData): ResultData<Int> {
+
+    suspend fun doctorLogin(loginData: LoginData): ResultData<Unit> {
         return RetrofitClient.loginApiService.doctorLogin(loginData)
     }
-    suspend fun adminLogin(loginData: LoginData): ResultData<Int> {
+
+    suspend fun adminLogin(loginData: LoginData): ResultData<Unit> {
         return RetrofitClient.loginApiService.adminLogin(loginData)
     }
 }

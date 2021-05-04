@@ -5,7 +5,7 @@ package com.muz1i.diseasereportandroid.bean
  * @date: 2021/4/28
  */
 data class UserInfoData(
-    var id: Int,
+    var id: Int?,
     var studentNum: String,
     var name: String,
     var password: String,

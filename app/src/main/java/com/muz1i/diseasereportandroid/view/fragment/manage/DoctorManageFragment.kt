@@ -3,6 +3,7 @@ package com.muz1i.diseasereportandroid.view.fragment.manage
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.databinding.FragmentDoctorMangeBinding
+import com.muz1i.diseasereportandroid.utils.ToastUtils
 import com.muz1i.diseasereportandroid.viewmodel.manage.DoctorViewModel
 
 /**
@@ -16,5 +17,17 @@ class DoctorManageFragment : BaseFragment<DoctorViewModel, FragmentDoctorMangeBi
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_doctor_mange
+    }
+
+    override fun initEvent() {
+
+    }
+
+    override fun onResume() {
+        val userManageContainerFragment = parentFragment as UserManageContainerFragment
+        userManageContainerFragment.setOnAddBtnClickListener {
+            ToastUtils.showToast("添加医生用户")
+        }
+        super.onResume()
     }
 }

@@ -1,5 +1,6 @@
 package com.muz1i.diseasereportandroid.view.activity
 
+import android.widget.ScrollView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import com.google.android.material.textfield.TextInputLayout
@@ -26,11 +27,15 @@ class UserDetailActivity : BaseActivity<UserViewModel, ActivityUserDetailBinding
     }
 
     override fun initView() {
-        stuNum = intent.getStringExtra(Constants.STU_NUM)
-    }
-
-    override fun loadData() {
-        viewModel.getUserDetail(stuNum)
+        val isAdd = intent.getBooleanExtra(Constants.IS_ADD_BUTTON_CLICK, false)
+        binding.isAdd = isAdd
+        if (!isAdd) {
+            stuNum = intent.getStringExtra(Constants.STU_NUM)
+            viewModel.getUserDetail(stuNum)
+        } else {
+            binding.viewModel = UserInfoData(null, "", "", "", "", "", "", "", "", "")
+            binding.toolbarTitle.text = "添加用户"
+        }
     }
 
     override fun observeData() {
@@ -46,6 +51,14 @@ class UserDetailActivity : BaseActivity<UserViewModel, ActivityUserDetailBinding
                     ToastUtils.showToast("修改失败，请稍后重试")
                 }
             })
+            addSuccess.observe(this@UserDetailActivity, {
+                if (it) {
+                    finish()
+                    ToastUtils.showToast("创建成功")
+                } else {
+                    ToastUtils.showToast("创建失败，请稍后重试")
+                }
+            })
         }
     }
 
@@ -55,13 +68,22 @@ class UserDetailActivity : BaseActivity<UserViewModel, ActivityUserDetailBinding
                 val userInfo = binding.viewModel as UserInfoData
                 viewModel.editUserInfo(userInfo)
             } else {
-                ToastUtils.showToast("修改失败，变量不能为空")
+                ToastUtils.showToast("修改失败，内容不能为空")
+            }
+        }
+        binding.addBtn.setOnClickListener {
+            if (checkNotNull()) {
+                val userInfo = binding.viewModel as UserInfoData
+                viewModel.addUser(userInfo)
+            } else {
+                ToastUtils.showToast("创建失败，内容不能为空")
             }
         }
     }
 
     private fun checkNotNull(): Boolean {
-        val constraintLayout = rootView as ConstraintLayout
+        val scrollView = rootView as ScrollView
+        val constraintLayout = scrollView[0] as ConstraintLayout
         for (i in 0 until constraintLayout.childCount) {
             if (constraintLayout[i] is TextInputLayout) {
                 val textInputLayout = constraintLayout[i] as TextInputLayout

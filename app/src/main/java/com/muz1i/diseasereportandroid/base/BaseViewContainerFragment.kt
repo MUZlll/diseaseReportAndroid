@@ -17,7 +17,6 @@ import java.util.*
  */
 abstract class BaseViewContainerFragment : Fragment() {
     lateinit var rootBinding: FragmentBaseContainerBinding
-
     private val containerAdapter by lazy {
         ContainerPagerAdapter(childFragmentManager)
     }

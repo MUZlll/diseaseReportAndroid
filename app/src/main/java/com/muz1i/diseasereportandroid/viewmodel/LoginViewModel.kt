@@ -21,7 +21,7 @@ class LoginViewModel : BaseViewModel() {
 
     //登陆结果
     val loginResult by lazy {
-        MutableLiveData<ResultData<Int>>()
+        MutableLiveData<ResultData<Unit>>()
     }
 
     //id

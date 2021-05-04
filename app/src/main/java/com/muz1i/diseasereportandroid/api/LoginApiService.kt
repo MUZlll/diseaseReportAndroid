@@ -11,11 +11,11 @@ import retrofit2.http.POST
  */
 interface LoginApiService {
     @POST("user/login")
-    suspend fun userLogin(@Body loginData: LoginData): ResultData<Int>
+    suspend fun userLogin(@Body loginData: LoginData): ResultData<Unit>
 
     @POST("doctor/login")
-    suspend fun doctorLogin(@Body loginData: LoginData): ResultData<Int>
+    suspend fun doctorLogin(@Body loginData: LoginData): ResultData<Unit>
 
     @POST("admin/login")
-    suspend fun adminLogin(@Body loginData: LoginData): ResultData<Int>
+    suspend fun adminLogin(@Body loginData: LoginData): ResultData<Unit>
 }

@@ -24,5 +24,11 @@ interface UserApiService {
     ): ResultData<PageHelperData<UserInfoData>>
 
     @POST("user/edit")
-    suspend fun editUserInfo(@Body userInfoData: UserInfoData): ResultData<Int>
+    suspend fun editUserInfo(@Body userInfoData: UserInfoData): ResultData<Unit>
+
+    @GET("user/delete")
+    suspend fun deleteUser(@Query("id") id: Int): ResultData<Unit>
+
+    @POST("user/create")
+    suspend fun addUser(@Body userInfoData: UserInfoData): ResultData<Unit>
 }

@@ -28,6 +28,14 @@ class UserViewModel : BaseViewModel() {
         MutableLiveData<Boolean>()
     }
 
+    val deleteSuccess by lazy {
+        MutableLiveData<Boolean>()
+    }
+
+    val addSuccess by lazy {
+        MutableLiveData<Boolean>()
+    }
+
     fun getUserList(pageNum: Int, pageSize: Int) {
         catchEx({
             val result = userRepository.getUserList(pageNum, pageSize).getResultData()
@@ -51,6 +59,24 @@ class UserViewModel : BaseViewModel() {
             editSuccess.value = result.success
         }, {
             editSuccess.value = false
+        })
+    }
+
+    fun deleteUser(id: Int) {
+        catchEx({
+            val result = userRepository.deleteUser(id)
+            deleteSuccess.value = result.success
+        }, {
+            deleteSuccess.value = false
+        })
+    }
+
+    fun addUser(userInfoData: UserInfoData) {
+        catchEx({
+            val result = userRepository.addUser(userInfoData)
+            addSuccess.value = result.success
+        }, {
+            addSuccess.value = false
         })
     }
 }
