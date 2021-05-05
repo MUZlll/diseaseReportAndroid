@@ -1,5 +1,7 @@
 package com.muz1i.diseasereportandroid.bean
 
+import com.muz1i.diseasereportandroid.api.ApiException
+
 /**
  * @author: Muz1i
  * @date: 2021/4/22
@@ -10,10 +12,10 @@ data class ResultData<T>(val success: Boolean, val code: Int, val message: Strin
     }
 
     fun getResultData(): T {
-//        if (code == SUCCESS_CODE) {
+        if (code == SUCCESS_CODE) {
             return data
-//        } else {
-//            throw ApiException(code, message)
-//        }
+        } else {
+            throw ApiException(code, message)
+        }
     }
 }

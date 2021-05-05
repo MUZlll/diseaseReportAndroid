@@ -24,18 +24,6 @@ class UserViewModel : BaseViewModel() {
         MutableLiveData<UserInfoData>()
     }
 
-    val editSuccess by lazy {
-        MutableLiveData<Boolean>()
-    }
-
-    val deleteSuccess by lazy {
-        MutableLiveData<Boolean>()
-    }
-
-    val addSuccess by lazy {
-        MutableLiveData<Boolean>()
-    }
-
     fun getUserList(pageNum: Int, pageSize: Int) {
         catchEx({
             val result = userRepository.getUserList(pageNum, pageSize).getResultData()

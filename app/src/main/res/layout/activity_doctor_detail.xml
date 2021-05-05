@@ -5,19 +5,19 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.muz1i.diseasereportandroid.bean.UserInfoData" />
-
-        <variable
             name="isAdd"
             type="Boolean" />
 
         <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.muz1i.diseasereportandroid.bean.DoctorInfoData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
         <Toolbar
@@ -55,9 +55,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_layout"
                     style="@style/TextInputLayoutStyle"
-                    android:layout_marginTop="30dp"
                     android:hint="@string/detail_name_text"
-                    app:layout_constraintBottom_toTopOf="@id/stu_num_layout"
+                    app:layout_constraintBottom_toTopOf="@id/password_layout"
                     app:layout_constraintTop_toTopOf="parent"
                     app:startIconDrawable="@mipmap/name">
 
@@ -70,25 +69,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/stu_num_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/detail_stu_num_text"
-                    app:layout_constraintTop_toBottomOf="@id/name_layout"
-                    app:startIconDrawable="@mipmap/number">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="1"
-                        android:text="@={viewModel.studentNum}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/password_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/detail_password_text"
-                    app:layout_constraintTop_toBottomOf="@id/stu_num_layout"
+                    app:layout_constraintTop_toBottomOf="@id/name_layout"
                     app:startIconDrawable="@mipmap/password">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -112,76 +96,6 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/grade_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/detail_grade_text"
-                    app:layout_constraintTop_toBottomOf="@id/sex_layout"
-                    app:startIconDrawable="@mipmap/grade">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@={viewModel.grade}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/institute_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/detail_institute_text"
-                    app:layout_constraintTop_toBottomOf="@id/grade_layout"
-                    app:startIconDrawable="@mipmap/institute">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@={viewModel.institute}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/major_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/detail_major_text"
-                    app:layout_constraintTop_toBottomOf="@id/institute_layout"
-                    app:startIconDrawable="@mipmap/major">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@={viewModel.major}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/class_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/detail_clazz_text"
-                    app:layout_constraintTop_toBottomOf="@id/major_layout"
-                    app:startIconDrawable="@mipmap/clazz">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@={viewModel.clazz}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dormitory_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:hint="@string/detail_dormitory_text"
-                    app:layout_constraintTop_toBottomOf="@id/class_layout"
-                    app:startIconDrawable="@mipmap/dormitory">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@={viewModel.dormitory}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <Button
                     android:id="@+id/modify_btn"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -193,7 +107,7 @@
                     android:visibility="@{isAdd?View.GONE:View.VISIBLE}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dormitory_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/sex_layout" />
 
                 <Button
                     android:id="@+id/add_btn"
@@ -206,7 +120,7 @@
                     android:visibility="@{isAdd?View.VISIBLE:View.GONE}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dormitory_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/sex_layout" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

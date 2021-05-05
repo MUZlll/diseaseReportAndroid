@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     }
 
     private fun initData() {
-//        permission = intent.getStringExtra(Constants.PERMISSION_KEY)
+//        permission = intent.getStringExtra(Constants.PERMISSION_KEY)!!
         permission = Constants.PERMISSION_ADMIN
         println("permission is -> $permission")
         permission.run {

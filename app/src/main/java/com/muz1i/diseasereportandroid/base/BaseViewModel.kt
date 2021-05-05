@@ -16,6 +16,18 @@ open class BaseViewModel : ViewModel() {
         MutableLiveData<LoadState>()
     }
 
+    val editSuccess by lazy {
+        MutableLiveData<Boolean>()
+    }
+
+    val deleteSuccess by lazy {
+        MutableLiveData<Boolean>()
+    }
+
+    val addSuccess by lazy {
+        MutableLiveData<Boolean>()
+    }
+    
     fun catchEx(tryMethod: suspend () -> Unit, catchMethod: suspend () -> Unit = {}) {
         viewModelScope.launch {
             try {

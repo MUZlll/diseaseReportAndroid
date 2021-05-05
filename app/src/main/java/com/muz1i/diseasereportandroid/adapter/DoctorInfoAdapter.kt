@@ -7,19 +7,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.muz1i.diseasereportandroid.R
-import com.muz1i.diseasereportandroid.bean.UserInfoData
-import com.muz1i.diseasereportandroid.databinding.ItemUserInfoBinding
-import com.muz1i.diseasereportandroid.databinding.ItemUserInfoHeaderBinding
+import com.muz1i.diseasereportandroid.bean.DoctorInfoData
+import com.muz1i.diseasereportandroid.databinding.ItemDoctorInfoBinding
+import com.muz1i.diseasereportandroid.databinding.ItemDoctorInfoHeaderBinding
 
 /**
  * @author: Muz1i
- * @date: 2021/4/29
+ * @date: 2021/5/4
  */
-class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() {
+class DoctorInfoAdapter : RecyclerView.Adapter<DoctorInfoAdapter.InnerViewHolder>() {
 
     private lateinit var onItemClickListener: OnItemClickListener
-    private val userList by lazy {
-        ArrayList<UserInfoData>()
+
+    private val doctorList by lazy {
+        ArrayList<DoctorInfoData>()
     }
 
     class InnerViewHolder(itemBinding: ViewDataBinding) :
@@ -29,17 +30,18 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerViewHolder {
         return if (viewType == 0) {
-            val binding = DataBindingUtil.inflate<ItemUserInfoHeaderBinding>(
+            val binding = DataBindingUtil.inflate<ItemDoctorInfoHeaderBinding>(
                 LayoutInflater.from(parent.context),
-                R.layout.item_user_info_header,
+                R.layout.item_doctor_info_header,
                 parent,
                 false
             )
             InnerViewHolder(binding)
         } else {
-            val binding = DataBindingUtil.inflate<ItemUserInfoBinding>(
+            val binding = DataBindingUtil.inflate<ItemDoctorInfoBinding>(
                 LayoutInflater.from(parent.context),
-                R.layout.item_user_info, parent, false
+                R.layout.item_doctor_info, parent,
+                false
             )
             InnerViewHolder(binding)
         }
@@ -47,18 +49,14 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
 
     override fun onBindViewHolder(holder: InnerViewHolder, position: Int) {
         holder.binding.run {
-            if (this is ItemUserInfoBinding) {
-                this.viewModel = userList[position]
-                this.executePendingBindings()
+            if (this is ItemDoctorInfoBinding) {
+                viewModel = doctorList[position]
+                executePendingBindings()
                 root.setOnClickListener {
-                    onItemClickListener.onItemClick(it, position, userList[position].studentNum)
+                    onItemClickListener.onItemClick(it, position, doctorList[position].id!!)
                 }
                 root.setOnLongClickListener {
-                    onItemClickListener.onItemLongClick(
-                        it,
-                        position,
-                        userList[position].id!!
-                    )
+                    onItemClickListener.onItemLongClick(it, position, doctorList[position].id!!)
                     true
                 }
             }
@@ -66,7 +64,7 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return doctorList.size
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -78,39 +76,33 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
     }
 
     interface OnItemClickListener {
-        fun onItemClick(view: View, position: Int, stuNum: String)
+        fun onItemClick(view: View, position: Int, id: Int)
         fun onItemLongClick(view: View, position: Int, id: Int)
     }
 
-    fun setData(list: List<UserInfoData>) {
-        userList.clear()
+    fun setData(list: List<DoctorInfoData>) {
+        doctorList.clear()
         //添加一个空UserInfoData用来占位，为了添加userInfoHeader
-        userList.add(
-            UserInfoData(
+        doctorList.add(
+            DoctorInfoData(
                 0,
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
                 "0",
                 "0",
                 "0"
             )
         )
-        userList.addAll(list)
+        doctorList.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun addData(list: List<UserInfoData>) {
-        val oldSize = userList.size
-        userList.addAll(list)
-        notifyItemRangeChanged(oldSize, userList.size)
+    fun addData(list: List<DoctorInfoData>) {
+        val oldSize = doctorList.size
+        doctorList.addAll(list)
+        notifyItemRangeChanged(oldSize, doctorList.size)
     }
 
     fun removeItem(pos: Int) {
-        userList.removeAt(pos)
+        doctorList.removeAt(pos)
         notifyItemRemoved(pos)
     }
 }

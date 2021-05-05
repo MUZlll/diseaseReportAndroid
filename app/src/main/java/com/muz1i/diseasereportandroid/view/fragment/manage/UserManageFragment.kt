@@ -21,6 +21,7 @@ import com.muz1i.diseasereportandroid.viewmodel.manage.UserViewModel
  * @date: 2021/4/29
  */
 class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>() {
+    
     private val userInfoAdapter by lazy {
         UserInfoAdapter()
     }
@@ -113,6 +114,10 @@ class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>
     private fun loadMore() {
         currentPage++
         viewModel.getUserList(currentPage, Constants.PAGE_SIZE)
+    }
+
+    override fun reload() {
+        loadData()
     }
 
     override fun onResume() {
