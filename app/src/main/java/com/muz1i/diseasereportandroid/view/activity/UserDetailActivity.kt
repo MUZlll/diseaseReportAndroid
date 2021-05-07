@@ -1,6 +1,8 @@
 package com.muz1i.diseasereportandroid.view.activity
 
+import android.widget.AutoCompleteTextView
 import com.muz1i.diseasereportandroid.R
+import com.muz1i.diseasereportandroid.adapter.MyArrayAdapter
 import com.muz1i.diseasereportandroid.base.BaseActivity
 import com.muz1i.diseasereportandroid.bean.UserInfoData
 import com.muz1i.diseasereportandroid.databinding.ActivityUserDetailBinding
@@ -33,6 +35,20 @@ class UserDetailActivity : BaseActivity<UserViewModel, ActivityUserDetailBinding
             binding.viewModel = UserInfoData(null, "", "", "", "", "", "", "", "", "")
             binding.toolbarTitle.text = "添加用户"
         }
+        (binding.sexLayout.editText as AutoCompleteTextView).setAdapter(
+            MyArrayAdapter(
+                this,
+                R.layout.list_item,
+                Constants.SEX_ITEMS
+            )
+        )
+        (binding.instituteLayout.editText as AutoCompleteTextView).setAdapter(
+            MyArrayAdapter(
+                this,
+                R.layout.list_item,
+                Constants.INSTITUTE_ITEMS
+            )
+        )
     }
 
     override fun observeData() {

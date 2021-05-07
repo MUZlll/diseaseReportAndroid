@@ -64,7 +64,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:tag="1"
+                        android:singleLine="true"
                         android:text="@={viewModel.name}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +79,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:tag="1"
+                        android:inputType="number"
+                        android:singleLine="true"
                         android:text="@={viewModel.studentNum}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -94,20 +95,28 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         android:text="@={viewModel.password}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/sex_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:hint="@string/detail_sex_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/password_layout"
+                    app:layout_constraintWidth_percent="0.5"
                     app:startIconDrawable="@mipmap/sex">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="none"
                         android:text="@={viewModel.sex}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -122,22 +131,29 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={viewModel.grade}"
-                        android:textSize="16sp" />
+                        android:singleLine="true"
+                        android:text="@={viewModel.grade}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/institute_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:hint="@string/detail_institute_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/grade_layout"
+                    app:layout_constraintWidth_percent="0.5"
                     app:startIconDrawable="@mipmap/institute">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={viewModel.institute}"
-                        android:textSize="16sp" />
+                        android:inputType="none"
+                        android:singleLine="true"
+                        android:text="@={viewModel.institute}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -150,6 +166,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         android:text="@={viewModel.major}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -164,6 +181,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         android:text="@={viewModel.clazz}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -178,6 +196,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         android:text="@={viewModel.dormitory}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>

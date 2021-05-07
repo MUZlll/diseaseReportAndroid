@@ -55,6 +55,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_layout"
                     style="@style/TextInputLayoutStyle"
+                    android:layout_marginTop="30dp"
                     android:hint="@string/detail_name_text"
                     app:layout_constraintBottom_toTopOf="@id/password_layout"
                     app:layout_constraintTop_toTopOf="parent"
@@ -84,14 +85,21 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/sex_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:hint="@string/detail_sex_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/password_layout"
+                    app:layout_constraintWidth_percent="0.5"
                     app:startIconDrawable="@mipmap/sex">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="none"
                         android:text="@={viewModel.sex}"
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>

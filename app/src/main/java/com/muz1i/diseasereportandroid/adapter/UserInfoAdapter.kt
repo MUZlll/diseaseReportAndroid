@@ -4,12 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.bean.UserInfoData
 import com.muz1i.diseasereportandroid.databinding.ItemUserInfoBinding
-import com.muz1i.diseasereportandroid.databinding.ItemUserInfoHeaderBinding
 
 /**
  * @author: Muz1i
@@ -22,55 +20,41 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
         ArrayList<UserInfoData>()
     }
 
-    class InnerViewHolder(itemBinding: ViewDataBinding) :
+    class InnerViewHolder(itemBinding: ItemUserInfoBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         val binding = itemBinding
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerViewHolder {
-        return if (viewType == 0) {
-            val binding = DataBindingUtil.inflate<ItemUserInfoHeaderBinding>(
-                LayoutInflater.from(parent.context),
-                R.layout.item_user_info_header,
-                parent,
-                false
-            )
-            InnerViewHolder(binding)
-        } else {
-            val binding = DataBindingUtil.inflate<ItemUserInfoBinding>(
-                LayoutInflater.from(parent.context),
-                R.layout.item_user_info, parent, false
-            )
-            InnerViewHolder(binding)
-        }
+        val binding = DataBindingUtil.inflate<ItemUserInfoBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.item_user_info, parent, false
+        )
+        return InnerViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: InnerViewHolder, position: Int) {
         holder.binding.run {
-            if (this is ItemUserInfoBinding) {
-                this.viewModel = userList[position]
-                this.executePendingBindings()
-                root.setOnClickListener {
-                    onItemClickListener.onItemClick(it, position, userList[position].studentNum)
-                }
-                root.setOnLongClickListener {
-                    onItemClickListener.onItemLongClick(
-                        it,
-                        position,
-                        userList[position].id!!
-                    )
-                    true
-                }
+            val userInfoData = userList[position]
+            viewModel = userInfoData
+            imageSex.setImageResource(if (userInfoData.sex == "男") R.mipmap.man else R.mipmap.woman)
+            executePendingBindings()
+            root.setOnClickListener {
+                onItemClickListener.onItemClick(it, position, userList[position].studentNum)
+            }
+            root.setOnLongClickListener {
+                onItemClickListener.onItemLongClick(
+                    it,
+                    position,
+                    userList[position].id!!
+                )
+                true
             }
         }
     }
 
     override fun getItemCount(): Int {
         return userList.size
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (position == 0) 0 else 1
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -84,21 +68,6 @@ class UserInfoAdapter : RecyclerView.Adapter<UserInfoAdapter.InnerViewHolder>() 
 
     fun setData(list: List<UserInfoData>) {
         userList.clear()
-        //添加一个空UserInfoData用来占位，为了添加userInfoHeader
-        userList.add(
-            UserInfoData(
-                0,
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0"
-            )
-        )
         userList.addAll(list)
         notifyDataSetChanged()
     }

@@ -2,8 +2,10 @@ package com.muz1i.diseasereportandroid.view.fragment.manage
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 import com.muz1i.diseasereportandroid.R
@@ -12,6 +14,7 @@ import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.databinding.FragmentUserMangeBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 import com.muz1i.diseasereportandroid.utils.LoadState
+import com.muz1i.diseasereportandroid.utils.SizeUtils
 import com.muz1i.diseasereportandroid.utils.ToastUtils
 import com.muz1i.diseasereportandroid.view.activity.UserDetailActivity
 import com.muz1i.diseasereportandroid.viewmodel.manage.UserViewModel
@@ -21,14 +24,14 @@ import com.muz1i.diseasereportandroid.viewmodel.manage.UserViewModel
  * @date: 2021/4/29
  */
 class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>() {
+
+    private var currentPage = 1
+    private var deletePos = -1
     
     private val userInfoAdapter by lazy {
         UserInfoAdapter()
     }
 
-    private var currentPage = 1
-
-    private var deletePos = 999
     override fun getVMClass(): Class<UserViewModel> {
         return UserViewModel::class.java
     }
@@ -41,6 +44,17 @@ class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>
         binding.userRv.run {
             layoutManager = LinearLayoutManager(context)
             adapter = userInfoAdapter
+            addItemDecoration(object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.top = SizeUtils.dip2px(2.5f)
+                    outRect.bottom = SizeUtils.dip2px(2.5f)
+                }
+            })
         }
     }
 
@@ -88,7 +102,12 @@ class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>
         viewModel.run {
             userList.observe(this@UserManageFragment, {
                 if (currentPage == 1) {
-                    userInfoAdapter.setData(it)
+                    if (it.isNotEmpty()) {
+                        userInfoAdapter.setData(it)
+                        loadState.value = LoadState.SUCCESS
+                    } else {
+                        loadState.value = LoadState.EMPTY
+                    }
                     binding.userManageRefresh.finishRefreshing()
                 } else {
                     if (it.isNotEmpty()) {

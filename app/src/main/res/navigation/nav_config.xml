@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/punch"
         android:label="punch"
-        android:name="com.muz1i.diseasereportandroid.view.fragment.punch.PunchContainerFragment">
+        android:name="com.muz1i.diseasereportandroid.view.fragment.punch.PunchManageFragment">
     </fragment>
     
     <fragment

@@ -5,16 +5,32 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+
     <color name="white">#FFFFFFFF</color>
-    
-    <color name="gray_deep">#2E2E2E</color>
-    <color name="gray">#7B7B7B</color>
-    <color name="black_wx">#0A0A0A</color>
-    <color name="gray_wx">#EDEDED</color>
-    <color name="blue_z">#1574FF</color>
     <color name="white_z">#FCF7FF</color>
-    <color name="gray_white_z">#FDFEFF</color>
+    
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_indigo">#14346D</color>
+    
+    <color name="black">#FF000000</color>
+    <color name="black_wx">#0A0A0A</color>
     <color name="black_z">#444646</color>
+
+    <color name="gray_white_z">#FDFEFF</color>
+    <color name="gray_wx">#EDEDED</color>
     <color name="gray_z">#BDBCBF</color>
+    <color name="gray">#7B7B7B</color>
+    <color name="gray_deep">#2E2E2E</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_90">#263238</color>
+    
+    <color name="purple_300">#BA68C8</color>
+
+    <color name="teal_400">#26A69A</color>
+
+    <color name="orange">#FF9800</color>
+
+    <color name="red">#D32F2F</color>
+    <color name="rv_bg">#EFEEEE</color>
 </resources>

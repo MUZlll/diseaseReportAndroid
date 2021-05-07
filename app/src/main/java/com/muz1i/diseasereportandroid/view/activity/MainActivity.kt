@@ -5,14 +5,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.databinding.ActivityMainBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 
-class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var permission: String

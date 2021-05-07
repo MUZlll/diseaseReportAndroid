@@ -2,8 +2,10 @@ package com.muz1i.diseasereportandroid.view.fragment.manage
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
 import com.muz1i.diseasereportandroid.R
@@ -12,6 +14,7 @@ import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.databinding.FragmentDoctorMangeBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 import com.muz1i.diseasereportandroid.utils.LoadState
+import com.muz1i.diseasereportandroid.utils.SizeUtils
 import com.muz1i.diseasereportandroid.utils.ToastUtils
 import com.muz1i.diseasereportandroid.view.activity.DoctorDetailActivity
 import com.muz1i.diseasereportandroid.viewmodel.manage.DoctorViewModel
@@ -42,6 +45,17 @@ class DoctorManageFragment : BaseFragment<DoctorViewModel, FragmentDoctorMangeBi
         binding.doctorRv.run {
             layoutManager = LinearLayoutManager(context)
             adapter = doctorInfoAdapter
+            addItemDecoration(object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.top = SizeUtils.dip2px(2.5f)
+                    outRect.bottom = SizeUtils.dip2px(2.5f)
+                }
+            })
         }
     }
 
@@ -90,12 +104,14 @@ class DoctorManageFragment : BaseFragment<DoctorViewModel, FragmentDoctorMangeBi
         viewModel.run {
             doctorList.observe(this@DoctorManageFragment, {
                 if (currentPage == 1) {
-                    if (it.isEmpty()) {
-                        loadState.value = LoadState.EMPTY
-                    } else {
+                    if (it.isNotEmpty()) {
                         doctorInfoAdapter.setData(it)
-                        binding.doctorManageRefresh.finishRefreshing()
+                        loadState.value = LoadState.SUCCESS
+                    } else {
+                        loadState.value = LoadState.EMPTY
                     }
+                    loadState.value = LoadState.SUCCESS
+                    binding.doctorManageRefresh.finishRefreshing()
                 } else {
                     if (it.isNotEmpty()) {
                         doctorInfoAdapter.addData(it)

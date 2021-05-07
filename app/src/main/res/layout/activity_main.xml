@@ -28,15 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/main_activity_title"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
-
-        <TextView
-            android:id="@+id/divide_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2"
-            app:layout_constraintTop_toBottomOf="@id/main_toolbar" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
@@ -47,7 +41,7 @@
             app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divide_line"
+            app:layout_constraintTop_toBottomOf="@id/main_toolbar"
             app:navGraph="@navigation/nav_config" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

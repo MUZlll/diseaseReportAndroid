@@ -25,4 +25,6 @@ object RetrofitClient {
     val loginApiService: LoginApiService = retrofit.create(LoginApiService::class.java)
     val userApiService: UserApiService = retrofit.create(UserApiService::class.java)
     val doctorApiService: DoctorApiService = retrofit.create(DoctorApiService::class.java)
+    val diseaseCaseApiService: DiseaseCaseApiService =
+        retrofit.create(DiseaseCaseApiService::class.java)
 }

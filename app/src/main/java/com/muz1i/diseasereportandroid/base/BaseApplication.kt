@@ -10,7 +10,7 @@ import android.content.Context
 class BaseApplication : Application() {
 
     companion object {
-        var appContext: Context? = null
+        lateinit var appContext: Context
     }
 
     override fun onCreate() {

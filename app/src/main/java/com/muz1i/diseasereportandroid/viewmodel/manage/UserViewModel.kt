@@ -27,7 +27,6 @@ class UserViewModel : BaseViewModel() {
     fun getUserList(pageNum: Int, pageSize: Int) {
         catchEx({
             val result = userRepository.getUserList(pageNum, pageSize).getResultData()
-            loadState.value = LoadState.SUCCESS
             userList.value = result.list
         }, {
             loadState.value = LoadState.ERROR

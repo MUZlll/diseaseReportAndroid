@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.DiseaseReportAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/blue_z</item>
-        <item name="colorPrimaryVariant">@color/blue_z</item>
-        <item name="colorOnPrimary">@color/blue_z</item>
+        <item name="colorPrimary">@color/blue_indigo</item>
+        <item name="colorPrimaryVariant">@color/blue_indigo</item>
+        <item name="colorAccent">@color/blue_indigo</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="toolBarColor">
-        <item name="android:background">@color/blue_z</item>
+        <item name="android:background">@color/blue_indigo</item>
     </style>
 </resources>

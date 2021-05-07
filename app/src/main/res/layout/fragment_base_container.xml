@@ -12,22 +12,28 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/container_tab"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/blue_indigo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabMode="scrollable" />
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/white"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/gray" />
 
-        <ImageView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:src="@mipmap/add"
-            app:layout_constraintBottom_toBottomOf="@id/container_tab"
+            android:backgroundTint="@color/blue_indigo"
+            android:src="@drawable/ic_add"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/container_tab" />
+            app:tint="@color/white" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/container_pager"

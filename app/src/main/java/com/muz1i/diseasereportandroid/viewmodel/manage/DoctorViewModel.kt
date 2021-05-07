@@ -28,7 +28,6 @@ class DoctorViewModel : BaseViewModel() {
         catchEx({
             val result = doctorRepository.getDoctorList(pageNum, pageSize).getResultData()
             doctorList.value = result.list
-            loadState.value = LoadState.SUCCESS
         }, {
             loadState.value = LoadState.ERROR
         })
