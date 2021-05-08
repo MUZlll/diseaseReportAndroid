@@ -48,11 +48,11 @@ class DiseaseCaseAdapter : RecyclerView.Adapter<DiseaseCaseAdapter.InnerViewHold
             }
             executePendingBindings()
             root.setOnClickListener {
-                onItemClickListener.onItemClick(it, position, diseaseCaseData)
+                onItemClickListener.onItemClick(it, position, diseaseCaseData.id)
             }
             root.setOnLongClickListener {
                 onItemClickListener.onItemLongClick(it, position, diseaseCaseData.id)
-                false
+                true
             }
             row.setOnClickListener {
                 displayHintLayout(closeLayout, it)
@@ -85,7 +85,7 @@ class DiseaseCaseAdapter : RecyclerView.Adapter<DiseaseCaseAdapter.InnerViewHold
     }
 
     interface OnItemClickListener {
-        fun onItemClick(view: View, position: Int, diseaseCaseData: DiseaseCaseData)
+        fun onItemClick(view: View, position: Int, id: Int)
         fun onItemLongClick(view: View, position: Int, id: Int)
     }
 

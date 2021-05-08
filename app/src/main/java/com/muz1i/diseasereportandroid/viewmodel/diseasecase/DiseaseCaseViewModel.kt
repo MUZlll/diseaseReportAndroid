@@ -3,6 +3,7 @@ package com.muz1i.diseasereportandroid.viewmodel.diseasecase
 import androidx.lifecycle.MutableLiveData
 import com.muz1i.diseasereportandroid.base.BaseViewModel
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseData
+import com.muz1i.diseasereportandroid.bean.DiseaseCaseSimple
 import com.muz1i.diseasereportandroid.repository.DiseaseRepository
 
 /**
@@ -17,6 +18,10 @@ class DiseaseCaseViewModel : BaseViewModel() {
 
     val diseaseCaseList by lazy {
         MutableLiveData<List<DiseaseCaseData>>()
+    }
+
+    val diseaseCase by lazy {
+        MutableLiveData<DiseaseCaseSimple>()
     }
 
     fun getDiseaseCaseList(level: String?, institute: String?, pageNum: Int, pageSize: Int) {
@@ -51,6 +56,13 @@ class DiseaseCaseViewModel : BaseViewModel() {
             deleteSuccess.value = result.success
         }, {
             deleteSuccess.value = false
+        })
+    }
+
+    fun getDiseaseCaseById(id: Int) {
+        catchEx({
+            val result = repository.getDiseaseCaseById(id).getResultData()
+            diseaseCase.value = result
         })
     }
 }

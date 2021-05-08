@@ -1,6 +1,7 @@
 package com.muz1i.diseasereportandroid.view.activity
 
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.adapter.MyArrayAdapter
 import com.muz1i.diseasereportandroid.base.BaseActivity
@@ -24,6 +25,10 @@ class DoctorDetailActivity : BaseActivity<DoctorViewModel, ActivityDoctorDetailB
         return DoctorViewModel::class.java
     }
 
+    override fun setToolBarTitle(): String {
+        return getString(R.string.detail_text)
+    }
+
     override fun initView() {
         val isAdd = intent.getBooleanExtra(Constants.IS_ADD_BUTTON_CLICK, false)
         binding.isAdd = isAdd
@@ -32,7 +37,7 @@ class DoctorDetailActivity : BaseActivity<DoctorViewModel, ActivityDoctorDetailB
             viewModel.getDoctorDetail(id)
         } else {
             binding.viewModel = DoctorInfoData(null, "", "", "")
-            binding.toolbarTitle.text = "添加用户"
+            findViewById<TextView>(R.id.toolbar_title).text = "添加用户"
         }
         val adapter = MyArrayAdapter(this, R.layout.list_item, Constants.SEX_ITEMS)
         (binding.sexLayout.editText as AutoCompleteTextView).setAdapter(adapter)

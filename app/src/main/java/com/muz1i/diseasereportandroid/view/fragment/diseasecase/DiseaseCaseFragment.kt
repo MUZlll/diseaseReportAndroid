@@ -1,6 +1,7 @@
 package com.muz1i.diseasereportandroid.view.fragment.diseasecase
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Rect
 import android.view.View
 import android.widget.AutoCompleteTextView
@@ -13,13 +14,14 @@ import com.muz1i.diseasereportandroid.adapter.DiseaseCaseAdapter
 import com.muz1i.diseasereportandroid.adapter.MyArrayAdapter
 import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.base.BaseFragment
-import com.muz1i.diseasereportandroid.bean.DiseaseCaseData
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseFilterData
 import com.muz1i.diseasereportandroid.databinding.FragmentDiseaseCaseBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 import com.muz1i.diseasereportandroid.utils.LoadState
 import com.muz1i.diseasereportandroid.utils.SizeUtils
 import com.muz1i.diseasereportandroid.utils.ToastUtils
+import com.muz1i.diseasereportandroid.view.activity.DiseaseCaseAddActivity
+import com.muz1i.diseasereportandroid.view.activity.DiseaseCaseDetailActivity
 import com.muz1i.diseasereportandroid.viewmodel.diseasecase.DiseaseCaseViewModel
 
 /**
@@ -82,8 +84,10 @@ class DiseaseCaseFragment : BaseFragment<DiseaseCaseViewModel, FragmentDiseaseCa
 
     override fun initEvent() {
         diseaseCaseAdapter.setOnItemClickListener(object : DiseaseCaseAdapter.OnItemClickListener {
-            override fun onItemClick(view: View, position: Int, diseaseCaseData: DiseaseCaseData) {
-
+            override fun onItemClick(view: View, position: Int, id: Int) {
+                val intent = Intent(context, DiseaseCaseDetailActivity::class.java)
+                intent.putExtra(Constants.DISEASE_CASE_ID, id)
+                startActivity(intent)
             }
 
             override fun onItemLongClick(view: View, position: Int, id: Int) {
@@ -108,6 +112,10 @@ class DiseaseCaseFragment : BaseFragment<DiseaseCaseViewModel, FragmentDiseaseCa
                 loadMore()
             }
         })
+        binding.addButton.setOnClickListener {
+            val intent = Intent(context, DiseaseCaseAddActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun loadData() {

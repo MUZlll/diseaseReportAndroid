@@ -2,6 +2,7 @@ package com.muz1i.diseasereportandroid.repository
 
 import com.muz1i.diseasereportandroid.api.RetrofitClient
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseData
+import com.muz1i.diseasereportandroid.bean.DiseaseCaseSimple
 import com.muz1i.diseasereportandroid.bean.PageHelperData
 import com.muz1i.diseasereportandroid.bean.ResultData
 
@@ -34,5 +35,9 @@ class DiseaseRepository {
 
     suspend fun deleteDiseaseCase(id: Int): ResultData<Unit> {
         return RetrofitClient.diseaseCaseApiService.deleteDiseaseCase(id)
+    }
+
+    suspend fun getDiseaseCaseById(id: Int): ResultData<DiseaseCaseSimple> {
+        return RetrofitClient.diseaseCaseApiService.getDiseaseCaseById(id)
     }
 }

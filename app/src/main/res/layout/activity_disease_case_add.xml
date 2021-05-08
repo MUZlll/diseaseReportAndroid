@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userViewModel"
+            type="com.muz1i.diseasereportandroid.bean.UserInfoData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guide_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <EditText
+            android:id="@+id/search_content"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:gravity="center"
+            android:hint="@string/please_input_stu_num_text"
+            android:singleLine="true"
+            android:text="1234214234324"
+            android:textColorHint="@color/blue_indigo"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/add_name"
+            app:layout_constraintEnd_toStartOf="@id/search_btn"
+            app:layout_constraintStart_toEndOf="@id/vertical_guide_line"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:src="@mipmap/search"
+            app:layout_constraintBottom_toBottomOf="@id/search_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/search_content"
+            app:tint="@color/blue_indigo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_name"
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/name_dot_text+userViewModel.name}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_sex"
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/sex_dot_text+userViewModel.sex}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintTop_toTopOf="@id/add_sex">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/institute_dot_text+userViewModel.institute}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_major"
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_sex">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/major_dot_text+userViewModel.major}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintTop_toTopOf="@id/add_major">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/grade_dot_text+userViewModel.grade}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_clazz"
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_major">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/clazz_dot_text+userViewModel.clazz}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/DiseaseCaseAddStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintTop_toTopOf="@id/add_clazz">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text='@{@string/dormitory_dot_text+userViewModel.dormitory}'
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

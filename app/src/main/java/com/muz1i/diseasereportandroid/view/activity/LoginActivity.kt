@@ -88,4 +88,8 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
             InputFilter.LengthFilter(length)
         }
     }
+
+    override fun setToolBarVisibility(): Int {
+        return View.GONE
+    }
 }

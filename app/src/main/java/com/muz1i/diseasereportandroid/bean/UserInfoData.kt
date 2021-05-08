@@ -6,13 +6,13 @@ package com.muz1i.diseasereportandroid.bean
  */
 data class UserInfoData(
     var id: Int?,
-    var studentNum: String,
-    var name: String,
-    var password: String,
-    var sex: String,
-    var institute: String,
-    var major: String,
-    var grade: String,
-    var clazz: String,
-    var dormitory: String
+    var studentNum: String = "",
+    var name: String = "",
+    var password: String = "",
+    var sex: String = "",
+    var institute: String = "",
+    var major: String = "",
+    var grade: String = "",
+    var clazz: String = "",
+    var dormitory: String = ""
 )

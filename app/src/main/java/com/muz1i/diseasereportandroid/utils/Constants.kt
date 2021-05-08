@@ -13,6 +13,7 @@ object Constants {
     const val IS_ADD_BUTTON_CLICK = "isAddButtonClick"
     const val STU_NUM = "stuNum"
     const val DOCTOR_ID = "doctorId"
+    const val DISEASE_CASE_ID = "diseaseCaseId"
     val SEX_ITEMS = listOf("男", "女")
     val INSTITUTE_ITEMS = listOf(
         "软件学院",

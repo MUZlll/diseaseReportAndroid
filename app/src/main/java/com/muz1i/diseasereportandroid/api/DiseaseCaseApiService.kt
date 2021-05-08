@@ -1,6 +1,7 @@
 package com.muz1i.diseasereportandroid.api
 
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseData
+import com.muz1i.diseasereportandroid.bean.DiseaseCaseSimple
 import com.muz1i.diseasereportandroid.bean.PageHelperData
 import com.muz1i.diseasereportandroid.bean.ResultData
 import retrofit2.http.Body
@@ -29,4 +30,7 @@ interface DiseaseCaseApiService {
 
     @GET("case/delete")
     suspend fun deleteDiseaseCase(@Query("id") id: Int): ResultData<Unit>
+
+    @GET("case/get")
+    suspend fun getDiseaseCaseById(@Query("id") id: Int): ResultData<DiseaseCaseSimple>
 }

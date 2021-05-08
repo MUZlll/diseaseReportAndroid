@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.muz1i.diseasereportandroid.bean.DiseaseCaseSimple" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/id_user_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_marginTop="30dp"
+                    android:hint="@string/stu_num_text"
+                    app:layout_constraintBottom_toTopOf="@id/disease_name_layout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@mipmap/number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:singleLine="true"
+                        android:text="@{``+viewModel.id_user}"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/disease_name_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/disease_case_name_text"
+                    app:layout_constraintTop_toBottomOf="@id/id_user_layout"
+                    app:startIconDrawable="@mipmap/disease">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@={viewModel.disease_name}"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/disease_level_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/disease_case_level_text"
+                    app:layout_constraintTop_toBottomOf="@id/disease_name_layout"
+                    app:startIconDrawable="@mipmap/level">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@={viewModel.disease_level}"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/create_time_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/create_time_text"
+                    app:layout_constraintTop_toBottomOf="@id/disease_level_layout"
+                    app:startIconDrawable="@mipmap/create_time_b">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:text="@={viewModel.create_time}"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/remark_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/remark_text"
+                    app:layout_constraintTop_toBottomOf="@id/create_time_layout"
+                    app:startIconDrawable="@mipmap/remark_b">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:text="@={viewModel.remark}"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/modify_btn"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:text="@string/complete_modify_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/remark_layout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -37,9 +37,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_middle"
+                android:drawablePadding="@dimen/spacing_medium"
                 android:text='@{``+viewModel.id}'
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:drawableLeftCompat="@mipmap/number_s"
                 app:layout_constraintStart_toEndOf="@id/disease_level"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,9 +61,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_middle"
+                android:drawablePadding="@dimen/spacing_medium"
                 android:text="@{viewModel.user.name}"
-                android:textSize="14sp"
                 android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:drawableLeftCompat="@mipmap/name_s"
                 app:layout_constraintStart_toEndOf="@id/disease_level"
                 app:layout_constraintTop_toBottomOf="@id/disease_name" />
 
@@ -71,8 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_middle"
                 android:text="@{viewModel.user.sex}"
-                android:textSize="14sp"
                 android:textColor="@color/gray"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/name"
                 app:layout_constraintTop_toBottomOf="@id/disease_name" />
 
@@ -82,8 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_medium"
                 android:text="@{viewModel.user.studentNum}"
-                android:textSize="14sp"
                 android:textColor="@color/gray"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/sex"
                 app:layout_constraintTop_toBottomOf="@id/disease_name" />
 
@@ -93,8 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_medium"
                 android:text="@{viewModel.user.grade}"
-                android:textSize="14sp"
                 android:textColor="@color/gray"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/stu_num"
                 app:layout_constraintTop_toBottomOf="@id/disease_name" />
 
@@ -134,8 +138,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.user.institute}"
-                    android:textSize="14sp"
                     android:textColor="@color/gray"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -145,8 +149,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_medium"
                     android:text="@{viewModel.user.major}"
-                    android:textSize="14sp"
                     android:textColor="@color/gray"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/institute"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,8 +160,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_medium"
                     android:text="@{viewModel.user.clazz}"
-                    android:textSize="14sp"
                     android:textColor="@color/gray"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/major"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -167,8 +171,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_medium"
                     android:text="@{viewModel.user.dormitory}"
-                    android:textSize="14sp"
                     android:textColor="@color/gray"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/clazz"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -176,9 +180,10 @@
                     android:id="@+id/remark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{@string/case_create_remark+viewModel.remark}'
-                    android:textSize="14sp"
+                    android:text="@{@string/remark_text+viewModel.remark}"
                     android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:drawableLeftCompat="@mipmap/remark"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/institute" />
 

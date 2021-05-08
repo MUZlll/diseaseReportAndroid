@@ -14,7 +14,7 @@
         android:theme="@style/Theme.DiseaseReportAndroid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".view.activity.DiseaseCaseAddActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".view.activity.MainActivity" />-->
+        <!--        <activity android:name=".view.activity.MainActivity" />-->
         <activity android:name=".view.activity.UserDetailActivity" />
         <activity android:name=".view.activity.DoctorDetailActivity" />
+        <activity android:name=".view.activity.DiseaseCaseDetailActivity" />
+        <!--        <activity android:name=".view.activity.DiseaseCaseAddActivity" />-->
     </application>
 
 </manifest>
