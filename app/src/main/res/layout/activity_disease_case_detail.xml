@@ -24,7 +24,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/id_user_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/TextInputLayoutSingleLineStyle"
                     android:layout_marginTop="30dp"
                     android:hint="@string/stu_num_text"
                     app:layout_constraintBottom_toTopOf="@id/disease_name_layout"
@@ -42,7 +42,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/disease_name_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/TextInputLayoutSingleLineStyle"
                     android:hint="@string/disease_case_name_text"
                     app:layout_constraintTop_toBottomOf="@id/id_user_layout"
                     app:startIconDrawable="@mipmap/disease">
@@ -59,7 +59,10 @@
                     android:id="@+id/disease_level_layout"
                     style="@style/TextInputLayoutAutoStyle"
                     android:hint="@string/disease_case_level_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/disease_name_layout"
+                    app:layout_constraintWidth_percent="0.5"
                     app:startIconDrawable="@mipmap/level">
 
                     <AutoCompleteTextView
@@ -72,7 +75,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/create_time_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/TextInputLayoutSingleLineStyle"
                     android:hint="@string/create_time_text"
                     app:layout_constraintTop_toBottomOf="@id/disease_level_layout"
                     app:startIconDrawable="@mipmap/create_time_b">
@@ -87,7 +90,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/remark_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/TextInputLayoutSingleLineStyle"
                     android:hint="@string/remark_dot_text"
                     app:layout_constraintTop_toBottomOf="@id/create_time_layout"
                     app:startIconDrawable="@mipmap/remark_b">

@@ -29,13 +29,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <View
+                    android:id="@+id/top_divide_line"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/normal_user_title"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@color/blue_indigo"
+                    android:gravity="center"
+                    android:text="@string/normal_user_text"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/top_divide_line" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_layout"
                     style="@style/TextInputLayoutStyle"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:hint="@string/name_text"
-                    app:layout_constraintBottom_toTopOf="@id/stu_num_layout"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/normal_user_title"
                     app:startIconDrawable="@mipmap/name">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -47,9 +77,28 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sex_layout"
+                    style="@style/TextInputLayoutAutoStyle"
+                    android:hint="@string/sex_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/name_layout"
+                    app:startIconDrawable="@mipmap/sex">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@={viewModel.sex}"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/stu_num_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/stu_num_text"
+                    app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name_layout"
                     app:startIconDrawable="@mipmap/number">
 
@@ -66,7 +115,9 @@
                     android:id="@+id/password_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/password_text"
-                    app:layout_constraintTop_toBottomOf="@id/stu_num_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/stu_num_layout"
                     app:startIconDrawable="@mipmap/password">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -78,31 +129,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/sex_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="@string/sex_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/password_layout"
-                    app:layout_constraintWidth_percent="0.5"
-                    app:startIconDrawable="@mipmap/sex">
-
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:text="@={viewModel.sex}"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/grade_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/grade_text"
-                    app:layout_constraintTop_toBottomOf="@id/sex_layout"
+                    app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/stu_num_layout"
                     app:startIconDrawable="@mipmap/grade">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -114,15 +146,11 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/institute_layout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    style="@style/TextInputLayoutAutoStyle"
                     android:hint="@string/institute_text"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/grade_layout"
-                    app:layout_constraintWidth_percent="0.5"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/grade_layout"
                     app:startIconDrawable="@mipmap/institute">
 
                     <AutoCompleteTextView
@@ -137,7 +165,9 @@
                     android:id="@+id/major_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/major_text"
-                    app:layout_constraintTop_toBottomOf="@id/institute_layout"
+                    app:layout_constraintEnd_toEndOf="@id/vertical_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/grade_layout"
                     app:startIconDrawable="@mipmap/major">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -152,7 +182,9 @@
                     android:id="@+id/class_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/clazz_text"
-                    app:layout_constraintTop_toBottomOf="@id/major_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/major_layout"
                     app:startIconDrawable="@mipmap/clazz">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -167,7 +199,9 @@
                     android:id="@+id/dormitory_layout"
                     style="@style/TextInputLayoutStyle"
                     android:hint="@string/dormitory_text"
-                    app:layout_constraintTop_toBottomOf="@id/class_layout"
+                    app:layout_constraintEnd_toEndOf="@id/vertical_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/major_layout"
                     app:startIconDrawable="@mipmap/dormitory">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -180,11 +214,11 @@
 
                 <Button
                     android:id="@+id/modify_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:padding="5dp"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginEnd="@dimen/spacing_large"
                     android:text="@string/complete_modify_text"
                     android:visibility="@{isAdd?View.GONE:View.VISIBLE}"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -193,11 +227,11 @@
 
                 <Button
                     android:id="@+id/add_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:padding="5dp"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginEnd="@dimen/spacing_large"
                     android:text="@string/create_user_text"
                     android:visibility="@{isAdd?View.VISIBLE:View.GONE}"
                     app:layout_constraintEnd_toEndOf="parent"

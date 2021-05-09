@@ -20,13 +20,6 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <TextView
-            android:id="@+id/divide_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E2E2E2"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,13 +29,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <View
+                    android:id="@+id/top_divide_line"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/doctor_user_title"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@color/blue_indigo"
+                    android:gravity="center"
+                    android:text="@string/doctor_user_text"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/top_divide_line" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_layout"
-                    style="@style/TextInputLayoutStyle"
-                    android:layout_marginTop="30dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:hint="@string/name_text"
                     app:layout_constraintBottom_toTopOf="@id/password_layout"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/doctor_user_title"
+                    app:layout_constraintWidth_percent="0.5"
                     app:startIconDrawable="@mipmap/name">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -55,9 +75,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/password_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:hint="@string/password_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name_layout"
+                    app:layout_constraintWidth_percent="0.5"
                     app:startIconDrawable="@mipmap/password">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -90,28 +115,28 @@
 
                 <Button
                     android:id="@+id/modify_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:text="@string/complete_modify_text"
                     android:visibility="@{isAdd?View.GONE:View.VISIBLE}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/sex_layout"
+                    app:layout_constraintStart_toStartOf="@id/sex_layout"
                     app:layout_constraintTop_toBottomOf="@id/sex_layout" />
 
                 <Button
                     android:id="@+id/add_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:text="@string/create_user_text"
                     android:visibility="@{isAdd?View.VISIBLE:View.GONE}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/sex_layout"
+                    app:layout_constraintStart_toStartOf="@id/sex_layout"
                     app:layout_constraintTop_toBottomOf="@id/sex_layout" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
