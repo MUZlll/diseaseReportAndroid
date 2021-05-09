@@ -180,7 +180,7 @@
                     android:id="@+id/remark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{@string/remark_text+viewModel.remark}"
+                    android:text="@{@string/remark_dot_text+viewModel.remark}"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
                     app:drawableLeftCompat="@mipmap/remark"

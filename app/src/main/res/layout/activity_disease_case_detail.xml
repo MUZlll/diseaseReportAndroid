@@ -57,12 +57,12 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/disease_level_layout"
-                    style="@style/TextInputLayoutStyle"
+                    style="@style/TextInputLayoutAutoStyle"
                     android:hint="@string/disease_case_level_text"
                     app:layout_constraintTop_toBottomOf="@id/disease_name_layout"
                     app:startIconDrawable="@mipmap/level">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -88,7 +88,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/remark_layout"
                     style="@style/TextInputLayoutStyle"
-                    android:hint="@string/remark_text"
+                    android:hint="@string/remark_dot_text"
                     app:layout_constraintTop_toBottomOf="@id/create_time_layout"
                     app:startIconDrawable="@mipmap/remark_b">
 
@@ -101,14 +101,14 @@
 
                 <Button
                     android:id="@+id/modify_btn"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/spacing_large"
                     android:padding="5dp"
                     android:text="@string/complete_modify_text"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/remark_layout"
+                    app:layout_constraintStart_toStartOf="@id/remark_layout"
                     app:layout_constraintTop_toBottomOf="@id/remark_layout" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -16,10 +16,7 @@ import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseFilterData
 import com.muz1i.diseasereportandroid.databinding.FragmentDiseaseCaseBinding
-import com.muz1i.diseasereportandroid.utils.Constants
-import com.muz1i.diseasereportandroid.utils.LoadState
-import com.muz1i.diseasereportandroid.utils.SizeUtils
-import com.muz1i.diseasereportandroid.utils.ToastUtils
+import com.muz1i.diseasereportandroid.utils.*
 import com.muz1i.diseasereportandroid.view.activity.DiseaseCaseAddActivity
 import com.muz1i.diseasereportandroid.view.activity.DiseaseCaseDetailActivity
 import com.muz1i.diseasereportandroid.viewmodel.diseasecase.DiseaseCaseViewModel

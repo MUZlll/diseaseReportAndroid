@@ -7,6 +7,10 @@
         <variable
             name="userViewModel"
             type="com.muz1i.diseasereportandroid.bean.UserInfoData" />
+
+        <variable
+            name="diseaseViewModel"
+            type="com.muz1i.diseasereportandroid.bean.DiseaseCaseData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,21 +24,45 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
+        <View
+            android:id="@+id/top_divide_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_info_title"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@color/blue_indigo"
+            android:gravity="center"
+            android:text="用户信息"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_divide_line" />
+
         <EditText
             android:id="@+id/search_content"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="@dimen/spacing_middle"
+            android:layout_marginTop="@dimen/spacing_middle"
             android:gravity="center"
             android:hint="@string/please_input_stu_num_text"
+            android:inputType="number"
+            android:maxLength="12"
             android:singleLine="true"
-            android:text="1234214234324"
             android:textColorHint="@color/blue_indigo"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/add_name"
             app:layout_constraintEnd_toStartOf="@id/search_btn"
             app:layout_constraintStart_toEndOf="@id/vertical_guide_line"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/user_info_title" />
 
         <ImageView
             android:id="@+id/search_btn"
@@ -50,9 +78,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_name"
             style="@style/DiseaseCaseAddStyle"
+            android:layout_marginTop="@dimen/spacing_middle"
             app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/user_info_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -148,5 +177,93 @@
                 android:text='@{@string/dormitory_dot_text+userViewModel.dormitory}'
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/disease_case_info_title"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:background="@color/blue_indigo"
+            android:gravity="center"
+            android:text="病例信息"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_clazz" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_disease_name"
+            style="@style/DiseaseCaseAddStyle"
+            android:layout_marginTop="@dimen/spacing_middle"
+            android:hint="@string/disease_case_name_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/disease_case_info_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@={diseaseViewModel.diseaseName}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_disease_level"
+            style="@style/DiseaseCaseAddAutoStyle"
+            android:hint="@string/disease_case_level_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintTop_toTopOf="@id/add_disease_name">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:text="@={diseaseViewModel.diseaseLevel}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_disease_create_time"
+            style="@style/DiseaseCaseAddStyle"
+            android:hint="@string/create_time_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_disease_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:editable="false"
+                android:text="@={diseaseViewModel.createTime}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_disease_remark"
+            style="@style/DiseaseCaseAddStyle"
+            android:hint="@string/remark_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_disease_create_time">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@={diseaseViewModel.remark}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/add_disease_case_btn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/add_disease_case_complete_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_disease_remark" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

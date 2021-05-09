@@ -48,10 +48,10 @@ class DiseaseCaseAdapter : RecyclerView.Adapter<DiseaseCaseAdapter.InnerViewHold
             }
             executePendingBindings()
             root.setOnClickListener {
-                onItemClickListener.onItemClick(it, position, diseaseCaseData.id)
+                onItemClickListener.onItemClick(it, position, diseaseCaseData.id!!)
             }
             root.setOnLongClickListener {
-                onItemClickListener.onItemLongClick(it, position, diseaseCaseData.id)
+                onItemClickListener.onItemLongClick(it, position, diseaseCaseData.id!!)
                 true
             }
             row.setOnClickListener {

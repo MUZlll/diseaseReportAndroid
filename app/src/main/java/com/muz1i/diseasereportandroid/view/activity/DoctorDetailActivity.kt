@@ -9,6 +9,7 @@ import com.muz1i.diseasereportandroid.bean.DoctorInfoData
 import com.muz1i.diseasereportandroid.databinding.ActivityDoctorDetailBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 import com.muz1i.diseasereportandroid.utils.EditCheckUtils
+import com.muz1i.diseasereportandroid.utils.FinishActivityAndToastUtils
 import com.muz1i.diseasereportandroid.utils.ToastUtils
 import com.muz1i.diseasereportandroid.viewmodel.manage.DoctorViewModel
 
@@ -49,20 +50,20 @@ class DoctorDetailActivity : BaseActivity<DoctorViewModel, ActivityDoctorDetailB
                 binding.viewModel = it
             })
             editSuccess.observe(this@DoctorDetailActivity, {
-                if (it) {
-                    finish()
-                    ToastUtils.showToast("修改成功")
-                } else {
-                    ToastUtils.showToast("修改失败，请稍后重试")
-                }
+                FinishActivityAndToastUtils.finishActivity(
+                    this@DoctorDetailActivity,
+                    it,
+                    "修改成功",
+                    "修改失败，请稍后重试"
+                )
             })
             addSuccess.observe(this@DoctorDetailActivity, {
-                if (it) {
-                    finish()
-                    ToastUtils.showToast("创建成功")
-                } else {
-                    ToastUtils.showToast("创建失败，请稍后重试")
-                }
+                FinishActivityAndToastUtils.finishActivity(
+                    this@DoctorDetailActivity,
+                    it,
+                    "创建成功",
+                    "创建失败，请稍后重试"
+                )
             })
         }
     }

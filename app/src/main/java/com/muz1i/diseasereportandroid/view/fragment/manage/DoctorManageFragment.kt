@@ -80,7 +80,6 @@ class DoctorManageFragment : BaseFragment<DoctorViewModel, FragmentDoctorMangeBi
                     show()
                 }
             }
-
         })
         binding.doctorManageRefresh.setOnRefreshListener(object : RefreshListenerAdapter() {
             override fun onRefresh(refreshLayout: TwinklingRefreshLayout?) {

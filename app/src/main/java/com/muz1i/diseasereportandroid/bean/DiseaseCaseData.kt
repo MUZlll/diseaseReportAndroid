@@ -5,10 +5,10 @@ package com.muz1i.diseasereportandroid.bean
  * @date: 2021/5/6
  */
 data class DiseaseCaseData(
-    val id: Int,
-    val user: UserInfoData,
-    val diseaseLevel: String,
-    val diseaseName: String,
-    val createTime: String,
-    val remark: String
+    val id: Int?,
+    var user: UserInfoData?,
+    var diseaseLevel: String,
+    var diseaseName: String,
+    var createTime: String,
+    var remark: String
 )
