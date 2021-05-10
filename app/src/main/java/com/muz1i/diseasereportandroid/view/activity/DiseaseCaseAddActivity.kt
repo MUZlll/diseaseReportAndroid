@@ -104,20 +104,20 @@ class DiseaseCaseAddActivity : BaseActivity<DiseaseCaseViewModel, ActivityDiseas
     }
 
     override fun observeData() {
-        userViewModel.userDetail.observe(this, {
+        userViewModel.userDetail.observe(this) {
             if (it == null) {
                 ToastUtils.showToast("请检查学号是否有误")
             } else {
                 binding.userViewModel = it
             }
-        })
-        viewModel.addSuccess.observe(this, {
+        }
+        viewModel.addSuccess.observe(this) {
             FinishActivityAndToastUtils.finishActivity(
                 this,
                 it,
                 "添加成功",
                 "添加失败，请稍后重试"
             )
-        })
+        }
     }
 }

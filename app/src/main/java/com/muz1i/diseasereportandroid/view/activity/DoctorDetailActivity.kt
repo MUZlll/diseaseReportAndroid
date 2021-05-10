@@ -46,25 +46,25 @@ class DoctorDetailActivity : BaseActivity<DoctorViewModel, ActivityDoctorDetailB
 
     override fun observeData() {
         viewModel.run {
-            doctorDetail.observe(this@DoctorDetailActivity, {
+            doctorDetail.observe(this@DoctorDetailActivity) {
                 binding.viewModel = it
-            })
-            editSuccess.observe(this@DoctorDetailActivity, {
+            }
+            editSuccess.observe(this@DoctorDetailActivity) {
                 FinishActivityAndToastUtils.finishActivity(
                     this@DoctorDetailActivity,
                     it,
                     "修改成功",
                     "修改失败，请稍后重试"
                 )
-            })
-            addSuccess.observe(this@DoctorDetailActivity, {
+            }
+            addSuccess.observe(this@DoctorDetailActivity) {
                 FinishActivityAndToastUtils.finishActivity(
                     this@DoctorDetailActivity,
                     it,
                     "创建成功",
                     "创建失败，请稍后重试"
                 )
-            })
+            }
         }
     }
 

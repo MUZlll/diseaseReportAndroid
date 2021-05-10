@@ -56,17 +56,17 @@ class DiseaseCaseDetailActivity :
 
     override fun observeData() {
         viewModel.run {
-            diseaseCase.observe(this@DiseaseCaseDetailActivity, {
+            diseaseCase.observe(this@DiseaseCaseDetailActivity) {
                 binding.viewModel = it
-            })
-            editSuccess.observe(this@DiseaseCaseDetailActivity, {
+            }
+            editSuccess.observe(this@DiseaseCaseDetailActivity) {
                 FinishActivityAndToastUtils.finishActivity(
                     this@DiseaseCaseDetailActivity,
                     it,
                     "修改成功",
                     "修改失败，请稍后重试"
                 )
-            })
+            }
         }
     }
 

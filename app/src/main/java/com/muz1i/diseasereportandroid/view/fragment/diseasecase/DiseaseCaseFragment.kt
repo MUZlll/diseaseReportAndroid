@@ -16,7 +16,10 @@ import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseFilterData
 import com.muz1i.diseasereportandroid.databinding.FragmentDiseaseCaseBinding
-import com.muz1i.diseasereportandroid.utils.*
+import com.muz1i.diseasereportandroid.utils.Constants
+import com.muz1i.diseasereportandroid.utils.LoadState
+import com.muz1i.diseasereportandroid.utils.SizeUtils
+import com.muz1i.diseasereportandroid.utils.ToastUtils
 import com.muz1i.diseasereportandroid.view.activity.DiseaseCaseAddActivity
 import com.muz1i.diseasereportandroid.view.activity.DiseaseCaseDetailActivity
 import com.muz1i.diseasereportandroid.viewmodel.diseasecase.DiseaseCaseViewModel
@@ -144,7 +147,7 @@ class DiseaseCaseFragment : BaseFragment<DiseaseCaseViewModel, FragmentDiseaseCa
 
     override fun observeData() {
         viewModel.run {
-            diseaseCaseList.observe(this@DiseaseCaseFragment, {
+            diseaseCaseList.observe(this@DiseaseCaseFragment) {
                 if (currentPage == 1) {
                     if (it.isNotEmpty()) {
                         diseaseCaseAdapter.setData(it)
@@ -162,15 +165,15 @@ class DiseaseCaseFragment : BaseFragment<DiseaseCaseViewModel, FragmentDiseaseCa
                     }
                     binding.diseaseCaseRefresh.finishLoadmore()
                 }
-            })
-            deleteSuccess.observe(this@DiseaseCaseFragment, {
+            }
+            deleteSuccess.observe(this@DiseaseCaseFragment) {
                 if (it) {
                     diseaseCaseAdapter.removeItem(deletePos)
                     ToastUtils.showToast("删除成功")
                 } else {
                     ToastUtils.showToast("删除失败，请稍后重试")
                 }
-            })
+            }
         }
     }
 }

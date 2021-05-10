@@ -34,19 +34,19 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
     override fun observeData() {
         viewModel.apply {
             val that = this@LoginActivity
-            loadState.observe(that, {
+            loadState.observe(that) {
                 binding.loadingPic.visibility =
                     if (it == LoadState.LOADING) View.VISIBLE else View.GONE
-            })
-            loginResult.observe(that, { loginResult ->
+            }
+            loginResult.observe(that) { loginResult ->
                 ToastUtils.showToast(loginResult.message)
                 if (loginResult.success) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra(Constants.PERMISSION_KEY, permission)
                     startActivity(intent)
                 }
-            })
-            identity.observe(that, {
+            }
+            identity.observe(that) {
                 when (it) {
                     R.id.user_permission -> {
                         loginIdFilter(12)
@@ -61,7 +61,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
                         permission = Constants.PERMISSION_ADMIN
                     }
                 }
-            })
+            }
         }
     }
 

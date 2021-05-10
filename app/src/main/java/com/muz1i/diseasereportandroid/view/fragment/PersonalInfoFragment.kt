@@ -23,8 +23,8 @@ class PersonalInfoFragment : BaseFragment<PersonalInfoViewModel, FragmentPersona
     }
 
     override fun observeData() {
-        viewModel.userInfo.observe(this, {
+        viewModel.userInfo.observe(this) {
             binding.userInfo = it
-        })
+        }
     }
 }

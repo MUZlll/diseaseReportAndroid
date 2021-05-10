@@ -101,7 +101,7 @@ class DoctorManageFragment : BaseFragment<DoctorViewModel, FragmentDoctorMangeBi
 
     override fun observeData() {
         viewModel.run {
-            doctorList.observe(this@DoctorManageFragment, {
+            doctorList.observe(this@DoctorManageFragment) {
                 if (currentPage == 1) {
                     if (it.isNotEmpty()) {
                         doctorInfoAdapter.setData(it)
@@ -120,15 +120,15 @@ class DoctorManageFragment : BaseFragment<DoctorViewModel, FragmentDoctorMangeBi
                     }
                     binding.doctorManageRefresh.finishLoadmore()
                 }
-            })
-            deleteSuccess.observe(this@DoctorManageFragment, {
+            }
+            deleteSuccess.observe(this@DoctorManageFragment) {
                 if (it) {
                     doctorInfoAdapter.removeItem(deletePos)
                     ToastUtils.showToast("删除成功")
                 } else {
                     ToastUtils.showToast("删除失败，请稍后重试")
                 }
-            })
+            }
         }
     }
 

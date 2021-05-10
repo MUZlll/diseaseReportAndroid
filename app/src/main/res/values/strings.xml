@@ -50,5 +50,6 @@
     <string name="add_disease_case_complete_text">添加完成</string>
     <string name="remark_text">备注</string>
     <string name="doctor_user_text">医生用户</string>
+    <string name="today_school_data_text">今日校园数据</string>
 
 </resources>

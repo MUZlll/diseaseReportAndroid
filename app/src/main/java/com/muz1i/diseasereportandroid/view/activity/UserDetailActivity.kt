@@ -59,25 +59,25 @@ class UserDetailActivity : BaseActivity<UserViewModel, ActivityUserDetailBinding
 
     override fun observeData() {
         viewModel.run {
-            userDetail.observe(this@UserDetailActivity, {
+            userDetail.observe(this@UserDetailActivity) {
                 binding.viewModel = it
-            })
-            editSuccess.observe(this@UserDetailActivity, {
+            }
+            editSuccess.observe(this@UserDetailActivity) {
                 FinishActivityAndToastUtils.finishActivity(
                     this@UserDetailActivity,
                     it,
                     "修改成功",
                     "修改失败，请稍后重试"
                 )
-            })
-            addSuccess.observe(this@UserDetailActivity, {
+            }
+            addSuccess.observe(this@UserDetailActivity) {
                 FinishActivityAndToastUtils.finishActivity(
                     this@UserDetailActivity,
                     it,
                     "创建成功",
                     "创建失败，请稍后重试"
                 )
-            })
+            }
         }
     }
 

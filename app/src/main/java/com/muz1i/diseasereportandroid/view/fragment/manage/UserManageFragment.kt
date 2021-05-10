@@ -100,7 +100,7 @@ class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>
 
     override fun observeData() {
         viewModel.run {
-            userList.observe(this@UserManageFragment, {
+            userList.observe(this@UserManageFragment) {
                 if (currentPage == 1) {
                     if (it.isNotEmpty()) {
                         userInfoAdapter.setData(it)
@@ -118,15 +118,15 @@ class UserManageFragment : BaseFragment<UserViewModel, FragmentUserMangeBinding>
                     }
                     binding.userManageRefresh.finishLoadmore()
                 }
-            })
-            deleteSuccess.observe(this@UserManageFragment, {
+            }
+            deleteSuccess.observe(this@UserManageFragment) {
                 if (it) {
                     userInfoAdapter.removeItem(deletePos)
                     ToastUtils.showToast("删除成功")
                 } else {
                     ToastUtils.showToast("删除失败，请稍后重试")
                 }
-            })
+            }
         }
     }
 
