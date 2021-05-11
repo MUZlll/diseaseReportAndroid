@@ -37,6 +37,8 @@ class UserViewModel : BaseViewModel() {
         catchEx({
             val result = userRepository.getUserInfo(stuNum).getResultData()
             userDetail.value = result
+        },{
+            loadState.value = LoadState.ERROR
         })
     }
 

@@ -10,16 +10,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <View
+            android:id="@+id/top_divide_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/public_task_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_public_task_bg"
+            android:gravity="center"
+            android:text="发布任务"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_divide_line" />
+
+        <View
+            android:id="@+id/inner_divide_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/public_task_btn" />
+
+        <include
+            android:id="@+id/item_header"
+            layout="@layout/item_punch_list_header"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inner_divide_line" />
+
         <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
             android:id="@+id/punch_manage_refresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/item_header">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/user_rv"
+                android:id="@+id/punch_rv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />

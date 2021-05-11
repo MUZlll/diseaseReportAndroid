@@ -27,4 +27,8 @@ class PersonalInfoFragment : BaseFragment<PersonalInfoViewModel, FragmentPersona
             binding.userInfo = it
         }
     }
+
+    override fun reload() {
+        loadData()
+    }
 }

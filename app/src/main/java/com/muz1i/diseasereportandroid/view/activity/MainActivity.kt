@@ -8,13 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.muz1i.diseasereportandroid.R
+import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.databinding.ActivityMainBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var permission: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +25,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-//        permission = intent.getStringExtra(Constants.PERMISSION_KEY)!!
-        permission = Constants.PERMISSION_ADMIN
-        println("permission is -> $permission")
-        permission.run {
+        println("permission is -> ${BaseApplication.permission}")
+        BaseApplication.permission.run {
             val that = this
             binding.bottomNavigation.run {
                 menu[1].isVisible = that != Constants.PERMISSION_USER

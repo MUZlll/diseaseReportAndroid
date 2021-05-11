@@ -27,12 +27,13 @@ open class BaseViewModel : ViewModel() {
     val addSuccess by lazy {
         MutableLiveData<Boolean>()
     }
-    
+
     fun catchEx(tryMethod: suspend () -> Unit, catchMethod: suspend () -> Unit = {}) {
         viewModelScope.launch {
             try {
                 tryMethod()
             } catch (ex: Exception) {
+                ex.printStackTrace()
                 catchMethod()
             }
         }

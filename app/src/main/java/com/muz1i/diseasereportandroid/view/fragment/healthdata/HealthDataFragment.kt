@@ -86,6 +86,9 @@ class HealthDataFragment : BaseFragment<HealthDataViewModel, FragmentHealthDataB
         loadTodaySchoolData()
     }
 
+    override fun reload() {
+        loadTodaySchoolData()
+    }
     private fun loadTodaySchoolData() {
 //        viewModel.getSchoolData(getDayFormat(System.currentTimeMillis()))
         viewModel.getSchoolData("2021-05-09")

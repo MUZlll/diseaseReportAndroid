@@ -5,6 +5,7 @@ import com.muz1i.diseasereportandroid.base.BaseViewModel
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseData
 import com.muz1i.diseasereportandroid.bean.DiseaseCaseSimple
 import com.muz1i.diseasereportandroid.repository.DiseaseRepository
+import com.muz1i.diseasereportandroid.utils.LoadState
 
 /**
  * @author: Muz1i
@@ -25,10 +26,14 @@ class DiseaseCaseViewModel : BaseViewModel() {
     }
 
     fun getDiseaseCaseList(level: String?, institute: String?, pageNum: Int, pageSize: Int) {
+        loadState.value = LoadState.LOADING
         catchEx({
             val result =
                 repository.getDiseaseCaseList(level, institute, pageNum, pageSize).getResultData()
             diseaseCaseList.value = result.list
+            loadState.value = LoadState.SUCCESS
+        }, {
+            loadState.value = LoadState.ERROR
         })
     }
 

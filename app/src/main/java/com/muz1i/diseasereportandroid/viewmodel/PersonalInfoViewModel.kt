@@ -24,6 +24,8 @@ class PersonalInfoViewModel : BaseViewModel() {
         catchEx({
             userInfo.value = userRepository.getUserInfo(stuNum).getResultData()
             loadState.value = LoadState.SUCCESS
+        }, {
+            loadState.value = LoadState.ERROR
         })
     }
 }

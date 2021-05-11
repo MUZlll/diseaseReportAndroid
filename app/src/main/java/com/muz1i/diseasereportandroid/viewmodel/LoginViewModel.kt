@@ -2,6 +2,7 @@ package com.muz1i.diseasereportandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.muz1i.diseasereportandroid.R
+import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.base.BaseViewModel
 import com.muz1i.diseasereportandroid.bean.LoginData
 import com.muz1i.diseasereportandroid.bean.ResultData
@@ -46,8 +47,14 @@ class LoginViewModel : BaseViewModel() {
         catchEx({
             val loginData = LoginData(id.value!!.toLong(), password.value.toString())
             val result = when (identity.value) {
-                R.id.user_permission -> repository.userLogin(loginData)
-                R.id.doctor_permission -> repository.doctorLogin(loginData)
+                R.id.user_permission -> {
+                    BaseApplication.id = id.value.toString()
+                    repository.userLogin(loginData)
+                }
+                R.id.doctor_permission -> {
+                    BaseApplication.id = id.value.toString()
+                    repository.doctorLogin(loginData)
+                }
                 R.id.admin_permission -> repository.adminLogin(loginData)
                 else -> null
             }

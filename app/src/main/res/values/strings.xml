@@ -51,5 +51,10 @@
     <string name="remark_text">备注</string>
     <string name="doctor_user_text">医生用户</string>
     <string name="today_school_data_text">今日校园数据</string>
+    <string name="punch_text">打卡</string>
+    <string name="today_already_punch_text">今日已完成打卡</string>
+    <string name="task_name_text">任务名称</string>
+    <string name="task_state_text">任务状态</string>
+    <string name="task_create_time_text">发布时间</string>
 
 </resources>

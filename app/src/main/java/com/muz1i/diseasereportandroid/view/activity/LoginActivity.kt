@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.view.View
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.base.BaseActivity
+import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.databinding.ActivityLoginBinding
 import com.muz1i.diseasereportandroid.utils.Constants
 import com.muz1i.diseasereportandroid.utils.LoadState
@@ -16,8 +17,6 @@ import com.muz1i.diseasereportandroid.viewmodel.LoginViewModel
  * @date: 2021/4/23
  */
 class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
-
-    private lateinit var permission: String
 
     override fun getContentViewId(): Int {
         return R.layout.activity_login
@@ -42,7 +41,6 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
                 ToastUtils.showToast(loginResult.message)
                 if (loginResult.success) {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.putExtra(Constants.PERMISSION_KEY, permission)
                     startActivity(intent)
                 }
             }
@@ -50,15 +48,15 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
                 when (it) {
                     R.id.user_permission -> {
                         loginIdFilter(12)
-                        permission = Constants.PERMISSION_USER
+                        BaseApplication.permission = Constants.PERMISSION_USER
                     }
                     R.id.doctor_permission -> {
                         loginIdFilter(10)
-                        permission = Constants.PERMISSION_DOCTOR
+                        BaseApplication.permission = Constants.PERMISSION_DOCTOR
                     }
                     R.id.admin_permission -> {
                         loginIdFilter(10)
-                        permission = Constants.PERMISSION_ADMIN
+                        BaseApplication.permission = Constants.PERMISSION_ADMIN
                     }
                 }
             }
