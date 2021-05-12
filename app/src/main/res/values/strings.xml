@@ -31,7 +31,7 @@
     <string name="complete_modify_text">完成修改</string>
     <string name="password_text">密码</string>
     <string name="create_user_text">创建用户</string>
-    <string name="doctor_id_text">账号</string>
+    <string name="id_text">账号</string>
     <string name="remark_dot_text">备注:</string>
     <string name="disease_case_level_text">疾病等级</string>
     <string name="disease_case_detail_toolbar_text">病例修改</string>
@@ -56,5 +56,15 @@
     <string name="task_name_text">任务名称</string>
     <string name="task_state_text">任务状态</string>
     <string name="task_create_time_text">发布时间</string>
+    <string name="running">正在进行</string>
+    <string name="ended">已结束</string>
+    <string name="public_task_text">发布任务</string>
+    <string name="add_item_text">添加条目</string>
+    <string name="confirm_text">确认</string>
+    <string name="cancel_text">取消</string>
+    <string name="please_input_item_name_text">请输入条目名称</string>
+    <string name="task_detail_text">任务详情</string>
+    <string name="num_text">序号</string>
+    <string name="date_text">日期</string>
 
 </resources>

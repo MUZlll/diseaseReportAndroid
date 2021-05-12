@@ -90,8 +90,8 @@ class HealthDataFragment : BaseFragment<HealthDataViewModel, FragmentHealthDataB
         loadTodaySchoolData()
     }
     private fun loadTodaySchoolData() {
-//        viewModel.getSchoolData(getDayFormat(System.currentTimeMillis()))
-        viewModel.getSchoolData("2021-05-09")
+        viewModel.getSchoolData(getDayFormat(System.currentTimeMillis()))
+//        viewModel.getSchoolData("2021-05-09")
     }
 
     override fun initEvent() {

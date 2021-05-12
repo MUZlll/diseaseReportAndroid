@@ -1,17 +1,25 @@
 package com.muz1i.diseasereportandroid.view.fragment.punch
 
+import android.app.AlertDialog
+import android.content.Intent
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.muz1i.diseasereportandroid.R
+import com.muz1i.diseasereportandroid.adapter.PunchListAdapter
 import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.databinding.FragmentPunchBinding
 import com.muz1i.diseasereportandroid.databinding.FragmentPunchManageBinding
 import com.muz1i.diseasereportandroid.databinding.ItemPunchEditTextBinding
 import com.muz1i.diseasereportandroid.utils.Constants
+import com.muz1i.diseasereportandroid.utils.LoadState
 import com.muz1i.diseasereportandroid.utils.ToastUtils
+import com.muz1i.diseasereportandroid.view.activity.PublicTaskActivity
+import com.muz1i.diseasereportandroid.view.activity.TaskDetailActivity
 import com.muz1i.diseasereportandroid.viewmodel.punch.PunchViewModel
 
 /**
@@ -19,6 +27,12 @@ import com.muz1i.diseasereportandroid.viewmodel.punch.PunchViewModel
  * @date: 2021/4/27
  */
 class PunchManageFragment : BaseFragment<PunchViewModel, ViewDataBinding>() {
+    private var deletePos = -1
+
+    private val punchListAdapter by lazy {
+        PunchListAdapter()
+    }
+
     private val itemBindingList by lazy {
         mutableListOf<ItemPunchEditTextBinding>()
     }
@@ -59,8 +73,44 @@ class PunchManageFragment : BaseFragment<PunchViewModel, ViewDataBinding>() {
         }
     }
 
+    private fun initAdminView() {
+        adminBinding.punchRv.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = punchListAdapter
+        }
+        viewModel.loadState.value = LoadState.LOADING
+        viewModel.getPunchList()
+    }
+
     private fun initNormalView() {
         viewModel.isPunched(BaseApplication.id)
+    }
+
+    override fun initEvent() {
+        adminBinding.publicTaskBtn.setOnClickListener {
+            val intent = Intent(context, PublicTaskActivity::class.java)
+            startActivity(intent)
+        }
+        punchListAdapter.setOnItemClickListener(object : PunchListAdapter.OnItemClickListener {
+            override fun onItemClick(view: View, position: Int, tableName: String) {
+                val intent = Intent(context, TaskDetailActivity::class.java)
+                intent.putExtra(Constants.TASK_NAME, tableName)
+                startActivity(intent)
+            }
+
+            override fun onItemLongClick(view: View, position: Int, tableName: String) {
+                AlertDialog.Builder(context).apply {
+                    setMessage("删除任务")
+                    setCancelable(false)
+                    setPositiveButton("确认") { _, _ ->
+                        viewModel.deletePunchTask(tableName)
+                        deletePos = position
+                    }
+                    setNegativeButton("取消") { _, _ -> }
+                    show()
+                }
+            }
+        })
     }
 
     override fun observeData() {
@@ -85,15 +135,25 @@ class PunchManageFragment : BaseFragment<PunchViewModel, ViewDataBinding>() {
                     ToastUtils.showToast("打卡失败，请稍后重试")
                 }
             }
-            /**
-             * ------------------------------------分割线------------------------------------
-             */
+            punchList.observe(that) {
+                if (it.isEmpty()) {
+                    loadState.value = LoadState.EMPTY
+                } else {
+                    loadState.value = LoadState.SUCCESS
+                    punchListAdapter.setData(it)
+                }
+            }
+            deleteTaskSuccess.observe(that) {
+                if (it) {
+                    punchListAdapter.removeItem(deletePos)
+                    ToastUtils.showToast("删除成功")
+                } else {
+                    ToastUtils.showToast("删除失败，请稍后重试")
+                }
+            }
         }
     }
 
-    /**
-     * ------------------------------------分割线------------------------------------
-     */
     private fun addPunchItemView(items: List<String>) {
         normalBinding.editTextContainer.removeAllViews()
         for (item in items) {
@@ -149,12 +209,5 @@ class PunchManageFragment : BaseFragment<PunchViewModel, ViewDataBinding>() {
             removeAllViews()
             layoutInflater.inflate(R.layout.layout_already_punch, this, true)
         }
-    }
-
-    /**
-     * ------------------------------------分割线------------------------------------
-     */
-    private fun initAdminView() {
-        
     }
 }

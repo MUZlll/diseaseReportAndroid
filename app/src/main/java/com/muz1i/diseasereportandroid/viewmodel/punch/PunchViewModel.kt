@@ -71,6 +71,8 @@ class PunchViewModel : BaseViewModel() {
         catchEx({
             val result = repository.getPunchList().getResultData()
             punchList.value = result
+        }, {
+            loadState.value = LoadState.ERROR
         })
     }
 

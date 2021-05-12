@@ -18,40 +18,40 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/public_task_btn"
+            android:id="@+id/add_item_btn"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:background="@drawable/shape_public_task_bg"
             android:gravity="center"
-            android:text="@string/public_task_text"
+            android:text="@string/add_item_text"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/top_divide_line" />
 
-        <View
-            android:id="@+id/inner_divide_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/public_task_btn" />
-
-        <include
-            android:id="@+id/item_header"
-            layout="@layout/item_punch_list_header"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+        <LinearLayout
+            android:id="@+id/edit_text_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inner_divide_line" />
+            app:layout_constraintTop_toBottomOf="@id/add_item_btn" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/punch_rv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scrollbars="vertical"
+        <TextView
+            android:id="@+id/complete_task_edit_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@drawable/shape_public_task_bg"
+            android:gravity="center"
+            android:text="@string/public_task_text"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_header" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

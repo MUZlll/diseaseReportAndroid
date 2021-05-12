@@ -27,6 +27,8 @@
         <activity android:name=".view.activity.DoctorDetailActivity" />
         <activity android:name=".view.activity.DiseaseCaseDetailActivity" />
         <activity android:name=".view.activity.DiseaseCaseAddActivity" />
+        <activity android:name=".view.activity.PublicTaskActivity" />
+        <activity android:name=".view.activity.TaskDetailActivity" />
     </application>
 
 </manifest>

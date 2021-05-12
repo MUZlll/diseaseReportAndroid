@@ -55,6 +55,10 @@ class PunchListAdapter : RecyclerView.Adapter<PunchListAdapter.InnerViewHolder>(
         return punchTableList.size
     }
 
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.onItemClickListener = listener
+    }
+
     interface OnItemClickListener {
         fun onItemClick(view: View, position: Int, tableName: String)
         fun onItemLongClick(view: View, position: Int, tableName: String)
