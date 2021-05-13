@@ -23,6 +23,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="@dimen/spacing_mxlarge"
+            android:src="@mipmap/logo_b"
+            app:layout_constraintBottom_toTopOf="@id/login_id_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/login_id_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"

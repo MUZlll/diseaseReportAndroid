@@ -26,12 +26,10 @@ class DiseaseCaseViewModel : BaseViewModel() {
     }
 
     fun getDiseaseCaseList(level: String?, institute: String?, pageNum: Int, pageSize: Int) {
-        loadState.value = LoadState.LOADING
         catchEx({
             val result =
                 repository.getDiseaseCaseList(level, institute, pageNum, pageSize).getResultData()
             diseaseCaseList.value = result.list
-            loadState.value = LoadState.SUCCESS
         }, {
             loadState.value = LoadState.ERROR
         })

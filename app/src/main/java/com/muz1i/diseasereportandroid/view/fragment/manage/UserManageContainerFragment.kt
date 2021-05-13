@@ -9,7 +9,7 @@ import java.util.*
  * @date: 2021/4/25
  */
 class UserManageContainerFragment : BaseViewContainerFragment() {
-    override fun getTabFragmentList(): Collection<Fragment> {
+    override fun getTabFragmentList(): List<Fragment> {
         return arrayListOf(UserManageFragment(), DoctorManageFragment())
     }
 

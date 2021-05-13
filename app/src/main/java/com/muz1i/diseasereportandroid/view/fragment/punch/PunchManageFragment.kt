@@ -68,52 +68,37 @@ class PunchManageFragment : BaseFragment<PunchViewModel, ViewDataBinding>() {
     override fun initView() {
         if (isAdmin) {
             initAdminView()
+            initAdminEvent()
+            initAdminObserve()
         } else {
             initNormalView()
+            initNormalObserve()
         }
     }
 
-    private fun initAdminView() {
-        adminBinding.punchRv.run {
-            layoutManager = LinearLayoutManager(context)
-            adapter = punchListAdapter
-        }
-        viewModel.loadState.value = LoadState.LOADING
-        viewModel.getPunchList()
-    }
-
-    private fun initNormalView() {
-        viewModel.isPunched(BaseApplication.id)
-    }
-
-    override fun initEvent() {
-        adminBinding.publicTaskBtn.setOnClickListener {
-            val intent = Intent(context, PublicTaskActivity::class.java)
-            startActivity(intent)
-        }
-        punchListAdapter.setOnItemClickListener(object : PunchListAdapter.OnItemClickListener {
-            override fun onItemClick(view: View, position: Int, tableName: String) {
-                val intent = Intent(context, TaskDetailActivity::class.java)
-                intent.putExtra(Constants.TASK_NAME, tableName)
-                startActivity(intent)
-            }
-
-            override fun onItemLongClick(view: View, position: Int, tableName: String) {
-                AlertDialog.Builder(context).apply {
-                    setMessage("删除任务")
-                    setCancelable(false)
-                    setPositiveButton("确认") { _, _ ->
-                        viewModel.deletePunchTask(tableName)
-                        deletePos = position
-                    }
-                    setNegativeButton("取消") { _, _ -> }
-                    show()
+    private fun initAdminObserve() {
+        val that = this
+        viewModel.run {
+            punchList.observe(that) {
+                if (it.isEmpty()) {
+                    loadState.value = LoadState.EMPTY
+                } else {
+                    loadState.value = LoadState.SUCCESS
+                    punchListAdapter.setData(it)
                 }
             }
-        })
+            deleteTaskSuccess.observe(that) {
+                if (it) {
+                    punchListAdapter.removeItem(deletePos)
+                    ToastUtils.showToast("删除成功")
+                } else {
+                    ToastUtils.showToast("删除失败，请稍后重试")
+                }
+            }
+        }
     }
 
-    override fun observeData() {
+    private fun initNormalObserve() {
         val that = this
         viewModel.run {
             isPunched.observe(that) {
@@ -135,23 +120,47 @@ class PunchManageFragment : BaseFragment<PunchViewModel, ViewDataBinding>() {
                     ToastUtils.showToast("打卡失败，请稍后重试")
                 }
             }
-            punchList.observe(that) {
-                if (it.isEmpty()) {
-                    loadState.value = LoadState.EMPTY
-                } else {
-                    loadState.value = LoadState.SUCCESS
-                    punchListAdapter.setData(it)
-                }
-            }
-            deleteTaskSuccess.observe(that) {
-                if (it) {
-                    punchListAdapter.removeItem(deletePos)
-                    ToastUtils.showToast("删除成功")
-                } else {
-                    ToastUtils.showToast("删除失败，请稍后重试")
-                }
-            }
         }
+    }
+
+    private fun initAdminEvent() {
+        adminBinding.publicTaskBtn.setOnClickListener {
+            val intent = Intent(context, PublicTaskActivity::class.java)
+            startActivity(intent)
+        }
+
+        punchListAdapter.setOnItemClickListener(object : PunchListAdapter.OnItemClickListener {
+            override fun onItemClick(view: View, position: Int, tableName: String) {
+                val intent = Intent(context, TaskDetailActivity::class.java)
+                intent.putExtra(Constants.TASK_NAME, tableName)
+                startActivity(intent)
+            }
+            override fun onItemLongClick(view: View, position: Int, tableName: String) {
+                AlertDialog.Builder(context).apply {
+                    setMessage("删除任务")
+                    setCancelable(false)
+                    setPositiveButton("确认") { _, _ ->
+                        viewModel.deletePunchTask(tableName)
+                        deletePos = position
+                    }
+                    setNegativeButton("取消") { _, _ -> }
+                    show()
+                }
+            }
+        })
+    }
+
+    private fun initAdminView() {
+        adminBinding.punchRv.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = punchListAdapter
+        }
+        viewModel.loadState.value = LoadState.LOADING
+        viewModel.getPunchList()
+    }
+
+    private fun initNormalView() {
+        viewModel.isPunched(BaseApplication.id)
     }
 
     private fun addPunchItemView(items: List<String>) {

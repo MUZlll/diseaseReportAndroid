@@ -9,61 +9,55 @@
             type="com.muz1i.diseasereportandroid.bean.DoctorInfoData" />
     </data>
 
-    <com.balysv.materialripple.MaterialRippleLayout
-        style="@style/RippleStyleBlack"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@drawable/shape_rv_item_bg"
         android:padding="@dimen/spacing_xmedium">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp">
+        <com.dingjianlun.circleimageview.CircleImageView
+            android:id="@+id/image_sex"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/spacing_large"
+            app:civ_border_color="@color/gray_wx"
+            app:civ_border_width="1dp"
+            app:civ_type="circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.dingjianlun.circleimageview.CircleImageView
-                android:id="@+id/image_sex"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="@dimen/spacing_large"
-                app:civ_border_color="@color/gray_wx"
-                app:civ_border_width="1dp"
-                app:civ_type="circle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/doctor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:text="@{viewModel.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/grey_90"
+            app:layout_constraintStart_toEndOf="@id/image_sex"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/doctor_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginEnd="@dimen/spacing_middle"
-                android:text="@{viewModel.name}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/grey_90"
-                app:layout_constraintStart_toEndOf="@id/image_sex"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/doctor_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:text="@{String.valueOf(viewModel.id)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintBottom_toBottomOf="@id/divide_line"
+            app:layout_constraintStart_toEndOf="@id/image_sex" />
 
-            <TextView
-                android:id="@+id/doctor_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginEnd="@dimen/spacing_middle"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:text="@{String.valueOf(viewModel.id)}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:layout_constraintBottom_toBottomOf="@id/divide_line"
-                app:layout_constraintStart_toEndOf="@id/image_sex" />
-
-            <View
-                android:id="@+id/divide_line"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="@color/grey_10"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/doctor_id" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.balysv.materialripple.MaterialRippleLayout>
+        <View
+            android:id="@+id/divide_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/grey_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/doctor_id" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

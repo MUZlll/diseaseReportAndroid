@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputLayout
 object EditCheckUtils {
     fun checkNotNull(rootView: View): Boolean {
         val tempRootView = rootView as ConstraintLayout
-        val scrollView = tempRootView[2] as ScrollView
+        val scrollView = tempRootView[0] as ScrollView
         val constraintLayout = scrollView[0] as ConstraintLayout
         for (i in 0 until constraintLayout.childCount) {
             if (constraintLayout[i] is TextInputLayout) {

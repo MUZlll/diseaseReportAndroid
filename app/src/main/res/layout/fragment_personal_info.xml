@@ -25,6 +25,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="姓名:"
             app:layout_constraintBottom_toTopOf="@id/stu_num_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -32,6 +33,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.name}"
             app:layout_constraintBottom_toTopOf="@id/stu_num_content"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -39,6 +41,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="学号:"
             app:layout_constraintBottom_toTopOf="@id/sex_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/name_text" />
 
         <TextView
@@ -46,6 +49,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.studentNum}"
             app:layout_constraintBottom_toTopOf="@id/sex_content"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/name_content" />
 
 
@@ -54,6 +58,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="性别:"
             app:layout_constraintBottom_toTopOf="@id/grade_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/stu_num_text" />
 
         <TextView
@@ -61,6 +66,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.sex}"
             app:layout_constraintBottom_toTopOf="@id/grade_content"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/stu_num_content" />
 
         <TextView
@@ -68,6 +74,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="年级:"
             app:layout_constraintBottom_toTopOf="@id/institute_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/sex_text" />
 
         <TextView
@@ -75,6 +82,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.grade}"
             app:layout_constraintBottom_toTopOf="@id/institute_text"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/sex_content" />
 
         <TextView
@@ -82,6 +90,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="学院:"
             app:layout_constraintBottom_toTopOf="@id/major_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/grade_text" />
 
         <TextView
@@ -89,6 +98,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.institute}"
             app:layout_constraintBottom_toTopOf="@id/major_content"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/grade_content" />
 
         <TextView
@@ -96,6 +106,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="专业:"
             app:layout_constraintBottom_toTopOf="@id/class_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/institute_text" />
 
         <TextView
@@ -103,6 +114,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.major}"
             app:layout_constraintBottom_toTopOf="@id/class_content"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/institute_content" />
 
         <TextView
@@ -110,6 +122,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="班级:"
             app:layout_constraintBottom_toTopOf="@id/dormitory_text"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/major_text" />
 
         <TextView
@@ -117,6 +130,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.clazz}"
             app:layout_constraintBottom_toTopOf="@id/dormitory_content"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/major_content" />
 
         <TextView
@@ -124,6 +138,7 @@
             style="@style/PersonalInfoTextStyle"
             android:text="宿舍:"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/institute_text" />
 
         <TextView
@@ -131,6 +146,7 @@
             style="@style/PersonalInfoContentStyle"
             android:text="@{userInfo.dormitory}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/vertical_guide_line"
             app:layout_constraintTop_toBottomOf="@id/institute_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

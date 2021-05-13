@@ -48,8 +48,6 @@ class TaskDetailActivity : BaseActivity<PunchViewModel, ActivityTaskDetailBindin
                 ) {
                     outRect.top = SizeUtils.dip2px(2.5f)
                     outRect.bottom = SizeUtils.dip2px(2.5f)
-                    outRect.left = SizeUtils.dip2px(2.5f)
-                    outRect.right = SizeUtils.dip2px(2.5f)
                 }
             })
         }

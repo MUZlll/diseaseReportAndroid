@@ -70,7 +70,6 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
 
     implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
-    implementation 'com.balysv:material-ripple:1.0.2'
     implementation 'com.dingjianlun:circleimageview:0.0.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

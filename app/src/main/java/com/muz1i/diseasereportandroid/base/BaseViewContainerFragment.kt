@@ -48,7 +48,7 @@ abstract class BaseViewContainerFragment : Fragment() {
         }
     }
 
-    abstract fun getTabFragmentList(): Collection<Fragment>
+    abstract fun getTabFragmentList(): List<Fragment>
 
     abstract fun getTabList(): ArrayList<String>
 

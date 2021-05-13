@@ -1,17 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DiseaseReportAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.DiseaseReportAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/gray_wx</item>
-        <item name="colorPrimaryVariant">@color/gray_wx</item>
-        <item name="colorOnPrimary">@color/gray_wx</item>
-        <!-- Status bar color. -->
+        <item name="colorPrimary">@color/blue_indigo</item>
+        <item name="colorPrimaryVariant">@color/blue_indigo</item>
+        <item name="colorAccent">@color/blue_indigo</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="toolBarColor">
-        <item name="android:background">@color/black_wx</item>
+        <item name="android:background">@color/blue_indigo</item>
     </style>
 </resources>

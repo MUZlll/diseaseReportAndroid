@@ -150,11 +150,11 @@ class DiseaseCaseFragment : BaseFragment<DiseaseCaseViewModel, FragmentDiseaseCa
             diseaseCaseList.observe(this@DiseaseCaseFragment) {
                 if (currentPage == 1) {
                     if (it.isNotEmpty()) {
-                        diseaseCaseAdapter.setData(it)
                         loadState.value = LoadState.SUCCESS
                     } else {
                         loadState.value = LoadState.EMPTY
                     }
+                    diseaseCaseAdapter.setData(it)
                     binding.diseaseCaseRefresh.finishRefreshing()
                 } else {
                     if (it.isNotEmpty()) {

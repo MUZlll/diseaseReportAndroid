@@ -9,188 +9,182 @@
             type="com.muz1i.diseasereportandroid.bean.DiseaseCaseData" />
     </data>
 
-    <com.balysv.materialripple.MaterialRippleLayout
-        style="@style/RippleStyleBlack"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_rv_item_bg">
+        android:background="@drawable/shape_rv_item_bg"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/disease_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.diseaseLevel}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/disease_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:text='@{``+viewModel.id}'
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@mipmap/number_s"
+            app:layout_constraintStart_toEndOf="@id/disease_level"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/disease_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:text='@{viewModel.diseaseName}'
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/disease_id"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:text="@{viewModel.user.name}"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:drawableLeftCompat="@mipmap/name_s"
+            app:layout_constraintStart_toEndOf="@id/disease_level"
+            app:layout_constraintTop_toBottomOf="@id/disease_name" />
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:text="@{viewModel.user.sex}"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/disease_name" />
+
+        <TextView
+            android:id="@+id/stu_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:text="@{viewModel.user.studentNum}"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/sex"
+            app:layout_constraintTop_toBottomOf="@id/disease_name" />
+
+        <TextView
+            android:id="@+id/grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:text="@{viewModel.user.grade}"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/stu_num"
+            app:layout_constraintTop_toBottomOf="@id/disease_name" />
+
+        <TextView
+            android:id="@+id/create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:text="@{viewModel.createTime}"
+            android:textColor="@color/blue_indigo"
+            app:layout_constraintBottom_toBottomOf="@id/disease_id"
+            app:layout_constraintEnd_toStartOf="@id/row"
+            app:layout_constraintTop_toTopOf="@id/disease_id" />
+
+        <ImageView
+            android:id="@+id/row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:src="@drawable/ic_row"
+            app:layout_constraintBottom_toBottomOf="@id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/blue_indigo" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:id="@+id/close_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/disease_id"
+            app:layout_constraintTop_toBottomOf="@id/name">
 
             <TextView
-                android:id="@+id/disease_level"
+                android:id="@+id/institute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@{viewModel.diseaseLevel}"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/name"
+                android:drawablePadding="@dimen/spacing_medium"
+                android:text="@{viewModel.user.institute}"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:drawableLeftCompat="@mipmap/address"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/disease_id"
+                android:id="@+id/major"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_middle"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:text="@{viewModel.user.major}"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/institute"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/clazz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:text="@{viewModel.user.clazz}"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/major"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dormitory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:text="@{viewModel.user.dormitory}"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/clazz"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/spacing_medium"
-                android:text='@{``+viewModel.id}'
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:drawableLeftCompat="@mipmap/number_s"
-                app:layout_constraintStart_toEndOf="@id/disease_level"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/disease_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:text='@{viewModel.diseaseName}'
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/disease_id"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_middle"
-                android:drawablePadding="@dimen/spacing_medium"
-                android:text="@{viewModel.user.name}"
+                android:text="@{@string/remark_dot_text+viewModel.remark}"
                 android:textColor="@color/gray"
                 android:textSize="14sp"
-                app:drawableLeftCompat="@mipmap/name_s"
-                app:layout_constraintStart_toEndOf="@id/disease_level"
-                app:layout_constraintTop_toBottomOf="@id/disease_name" />
+                app:drawableLeftCompat="@mipmap/remark_s"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/institute" />
 
-            <TextView
-                android:id="@+id/sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_middle"
-                android:text="@{viewModel.user.sex}"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/name"
-                app:layout_constraintTop_toBottomOf="@id/disease_name" />
-
-            <TextView
-                android:id="@+id/stu_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:text="@{viewModel.user.studentNum}"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/sex"
-                app:layout_constraintTop_toBottomOf="@id/disease_name" />
-
-            <TextView
-                android:id="@+id/grade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:text="@{viewModel.user.grade}"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/stu_num"
-                app:layout_constraintTop_toBottomOf="@id/disease_name" />
-
-            <TextView
-                android:id="@+id/create_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spacing_large"
-                android:text="@{viewModel.createTime}"
-                android:textColor="@color/blue_indigo"
-                app:layout_constraintBottom_toBottomOf="@id/name"
-                app:layout_constraintEnd_toStartOf="@id/row"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/row"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spacing_medium"
-                android:src="@drawable/ic_row"
-                app:layout_constraintBottom_toBottomOf="@id/name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/blue_indigo" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/close_layout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/disease_id"
-                app:layout_constraintTop_toBottomOf="@id/name">
-
-                <TextView
-                    android:id="@+id/institute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/spacing_medium"
-                    android:text="@{viewModel.user.institute}"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp"
-                    app:drawableLeftCompat="@mipmap/address"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/major"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_medium"
-                    android:text="@{viewModel.user.major}"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/institute"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/clazz"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_medium"
-                    android:text="@{viewModel.user.clazz}"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/major"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/dormitory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_medium"
-                    android:text="@{viewModel.user.dormitory}"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/clazz"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/remark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/spacing_medium"
-                    android:text="@{@string/remark_dot_text+viewModel.remark}"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp"
-                    app:drawableLeftCompat="@mipmap/remark_s"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/institute" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.balysv.materialripple.MaterialRippleLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
