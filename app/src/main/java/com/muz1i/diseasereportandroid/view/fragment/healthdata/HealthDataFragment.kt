@@ -145,11 +145,9 @@ class HealthDataFragment : BaseFragment<HealthDataViewModel, FragmentHealthDataB
         val valuesLight = mutableListOf<BarEntry>()
         val valuesSerious = mutableListOf<BarEntry>()
         for (i in it.indices) {
-            if (!isNullData(it[i])) {
-                valuesHealth.add(BarEntry(i.toFloat() - barWidth, it[i].healthNum.toFloat()))
-                valuesLight.add(BarEntry(i.toFloat(), it[i].lightNum.toFloat()))
-                valuesSerious.add(BarEntry(i.toFloat() + barWidth, it[i].seriousNum.toFloat()))
-            }
+            valuesHealth.add(BarEntry(i.toFloat() - barWidth, it[i].healthNum.toFloat()))
+            valuesLight.add(BarEntry(i.toFloat(), it[i].lightNum.toFloat()))
+            valuesSerious.add(BarEntry(i.toFloat() + barWidth, it[i].seriousNum.toFloat()))
         }
         binding.barChart.run {
             if (data != null && data.dataSetCount > 0) {
@@ -182,10 +180,6 @@ class HealthDataFragment : BaseFragment<HealthDataViewModel, FragmentHealthDataB
             setVisibleXRangeMaximum(3.5f)
             invalidate()
         }
-    }
-
-    private fun isNullData(data: HealthData): Boolean {
-        return (data.healthNum == 0 && data.lightNum == 0 && data.seriousNum == 0)
     }
 
     private fun getIntValueFormatter(): ValueFormatter {

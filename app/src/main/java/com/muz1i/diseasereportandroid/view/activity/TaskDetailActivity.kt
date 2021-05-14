@@ -1,17 +1,13 @@
 package com.muz1i.diseasereportandroid.view.activity
 
-import android.graphics.Rect
-import android.view.View
 import android.widget.TextView
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.muz1i.diseasereportandroid.R
 import com.muz1i.diseasereportandroid.adapter.TaskDetailAdapter
 import com.muz1i.diseasereportandroid.base.BaseActivity
 import com.muz1i.diseasereportandroid.databinding.ActivityTaskDetailBinding
 import com.muz1i.diseasereportandroid.utils.Constants
-import com.muz1i.diseasereportandroid.utils.SizeUtils
 import com.muz1i.diseasereportandroid.viewmodel.punch.PunchViewModel
 
 /**
@@ -39,17 +35,6 @@ class TaskDetailActivity : BaseActivity<PunchViewModel, ActivityTaskDetailBindin
         binding.taskContentRv.run {
             layoutManager = LinearLayoutManager(context)
             adapter = taskContentAdapter
-            addItemDecoration(object : RecyclerView.ItemDecoration() {
-                override fun getItemOffsets(
-                    outRect: Rect,
-                    view: View,
-                    parent: RecyclerView,
-                    state: RecyclerView.State
-                ) {
-                    outRect.top = SizeUtils.dip2px(2.5f)
-                    outRect.bottom = SizeUtils.dip2px(2.5f)
-                }
-            })
         }
     }
 
