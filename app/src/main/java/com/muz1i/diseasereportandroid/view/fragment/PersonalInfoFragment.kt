@@ -1,6 +1,7 @@
 package com.muz1i.diseasereportandroid.view.fragment
 
 import com.muz1i.diseasereportandroid.R
+import com.muz1i.diseasereportandroid.base.BaseApplication
 import com.muz1i.diseasereportandroid.base.BaseFragment
 import com.muz1i.diseasereportandroid.databinding.FragmentPersonalInfoBinding
 import com.muz1i.diseasereportandroid.viewmodel.PersonalInfoViewModel
@@ -19,7 +20,7 @@ class PersonalInfoFragment : BaseFragment<PersonalInfoViewModel, FragmentPersona
     }
 
     override fun loadData() {
-        viewModel.getUserInfo("201730685500")
+        viewModel.getUserInfo(BaseApplication.id)
     }
 
     override fun observeData() {

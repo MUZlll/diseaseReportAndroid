@@ -92,7 +92,7 @@ class DiseaseCaseFragment : BaseFragment<DiseaseCaseViewModel, FragmentDiseaseCa
 
             override fun onItemLongClick(view: View, position: Int, id: Int) {
                 AlertDialog.Builder(context).apply {
-                    setMessage("删除用户")
+                    setMessage("删除病例")
                     setCancelable(false)
                     setPositiveButton("确认") { _, _ ->
                         viewModel.deleteDiseaseCase(id)
